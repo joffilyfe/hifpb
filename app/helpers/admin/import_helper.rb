@@ -18,7 +18,10 @@ module Admin::ImportHelper
     request = Net::HTTP::Post.new(uri.request_uri, header)
 
     if not params[:data].nil?
-      request.body = params[:data]
+      request.body = ""
+      params[:data].each do |key, value|
+        request.body += "#{key}=#{value}&"
+      end
     end
 
     response = http.request(request)
