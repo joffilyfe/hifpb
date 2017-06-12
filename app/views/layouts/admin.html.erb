@@ -37,9 +37,6 @@
   </nav>
 
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-    <div class="col-md-12">
-      <h3>Menu</h3>
-    </div>
     <ul class="nav menu">
       <li class="active">
         <%= link_to admin_path do %>
@@ -56,9 +53,7 @@
             <%= link_to("Campi", admin_campus_path) %>
           </li>
           <li>
-            <a class="" href="#">
-              <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg>Cursos
-            </a>
+            <%= link_to("Cursos", admin_courses_path) %>
           </li>
           <li>
             <a class="" href="#">
