@@ -53,9 +53,7 @@
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
-            <a class="" href="#">
-              <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg>Campi
-            </a>
+            <%= link_to("Campi", admin_campus_path) %>
           </li>
           <li>
             <a class="" href="#">
@@ -74,6 +72,13 @@
   </div><!--/.sidebar-->
 
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+      <div class="col-md-12">
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: "alert bg-#{name}" %>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
   </div>
 

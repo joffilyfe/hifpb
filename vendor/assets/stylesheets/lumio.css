@@ -1,10 +1,3 @@
-/*
-Lumino Admin Bootstrap Template
-Version 1.0
-*/
-
-
-/*Global Styles*/
 
 body {
 	background: #f1f4f7;
@@ -98,7 +91,7 @@ h3, h4 {
 	color: #289F54;
 }
 
-/*Buttons*/
+
 
 a.btn:hover,
 button:hover {
@@ -247,11 +240,11 @@ a.bg-primary:hover {
 	background-color: #e9ecf2;
 }
 .bg-success {
-	color: #fff;
-	background-color: #8ad919;
+	color: #3c763d;
+	background-color: #d6e9c6;
 }
 a.bg-success:hover {
-	background-color: #8ad919;
+	background-color: #d6e9c6;
 }
 .bg-success a {
 	color: rgba(255, 255, 255, .75);
@@ -259,6 +252,10 @@ a.bg-success:hover {
 .bg-info {
 	color: #fff;
 	background-color: #289F54;
+}
+.bg-information {
+  color: #fff;
+  background-color: #58afd9;
 }
 a.bg-info:hover {
 	background-color: #289F54;
@@ -570,7 +567,7 @@ a.bg-danger:hover {
 .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
 	color: #fff;
 	background-color: #289F54;
-}*/
+}
 
 .sidebar ul.nav ul,
 .sidebar ul.nav ul li {
@@ -928,7 +925,6 @@ h1.page-header {
 	height: 65px;
 	overflow: scroll;
 }
-
 
 
 
