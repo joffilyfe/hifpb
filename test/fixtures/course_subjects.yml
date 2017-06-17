@@ -1,0 +1,9 @@
+course_subject:
+  initials: "i"
+  description: "a"
+  kind: 1
+  count_rating: 1
+  description_history: "a"
+  optinonal: false
+  course: tsi
+  semester: 1
