@@ -17,3 +17,6 @@
 //= require bootstrap
 //= require lumino-glyphs
 //= require bootstrap-datepicker
+//= require bootstrap-table
+//= require bootstrap-select.min
+//= require admin/import

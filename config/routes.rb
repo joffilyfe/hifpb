@@ -14,9 +14,8 @@ Rails.application.routes.draw do
       post 'importar', to: 'courses#import'
     end
 
-    scope '/importar' do
-      get 'campus', to: 'import#campus', as: 'importar_campus'
-      get 'cursos/:id_campus/:ano_letivo/:periodo_letivo', to: 'import#courses', as: 'importar_courses'
+    resources :course_subject, only: [:index], path: 'disciplinas' do
+        post 'importar', to: 'course_subject#import', on: :collection
     end
   end
 end

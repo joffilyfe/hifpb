@@ -7,7 +7,6 @@ class Admin::CoursesController < Admin::AdminController
   end
 
   def import
-    puts(course_params.to_h)
     response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_cursos/',
       data: course_params})
 
