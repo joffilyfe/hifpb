@@ -62,6 +62,23 @@
             <%= link_to("Professores", admin_teacher_index_path) %>
           </li>
         </ul>
+      </li> <!-- opções para importação -->
+    </li>
+    <li class="parent ">
+      <a href="#">
+        <span data-toggle="collapse" href="#sub-item-2">
+        <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres</span>
+      </a>
+      <ul class="children collapse" id="sub-item-2">
+        <li>
+          <%= link_to("Cadastrar Semestre", new_admin_semester_path) %>
+        </li>
+        <li>
+          <%= link_to("Listar Semestres", admin_semesters_path) %>
+        </li>
+      </ul>
+    </li>
+      <li>
       </li>
       <li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Calendário</a></li>
     </ul>
@@ -79,7 +96,9 @@
   </div>
 
   <script>
-    $('#calendar').datepicker({
+    $('form .calendar').datepicker({
+      format: "dd/mm/yyyy",
+      language: "pt-BR"
     });
 
     !function ($) {
