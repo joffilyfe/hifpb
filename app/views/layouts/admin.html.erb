@@ -50,7 +50,9 @@
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
-            <%= link_to("Campi", admin_campus_path) %>
+            <%= link_to(admin_campus_index_path) do %>
+              <svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg> Campi
+            <% end %>
           </li>
           <li>
             <%= link_to("Cursos", admin_courses_path) %>

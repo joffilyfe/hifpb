@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shift: 1
+  start: 2017-06-18 07:00:00
+  end: 2017-06-18 07:50:00
+  campus: campus
+
+two:
+  shift: 1
+  start: 2017-06-18 07:50:00
+  end: 2017-06-18 08:40:00
+  campus: campus

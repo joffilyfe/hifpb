@@ -2,7 +2,7 @@ class Admin::CampusController < Admin::AdminController
 
   include Admin::ImportHelper
 
-  def show
+  def index
     @campus = Campus.all.order(id: :asc)
   end
 
@@ -18,6 +18,6 @@ class Admin::CampusController < Admin::AdminController
     end
 
     flash[:success] = 'Dados importados com sucesso'
-    redirect_to action: :show
+    redirect_to action: :index
   end
 end

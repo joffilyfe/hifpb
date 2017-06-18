@@ -17,4 +17,5 @@
  *= require bootstrap-table
  *= require bootstrap-select.min
  *= require admin/import
+ *= require admin/campus_schedules
  */

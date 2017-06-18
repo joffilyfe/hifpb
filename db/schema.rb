@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20170618110558) do
 
-ActiveRecord::Schema.define(version: 20170617210351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20170617210351) do
     t.string "sigla"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "campus_schedules", force: :cascade do |t|
+    t.integer "shift"
+    t.time "start"
+    t.time "end"
+    t.bigint "campus_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campus_id", "start", "end"], name: "index_campus_schedules_on_campus_id_and_start_and_end", unique: true
+    t.index ["campus_id"], name: "index_campus_schedules_on_campus_id"
   end
 
   create_table "course_subjects", force: :cascade do |t|
@@ -46,11 +57,23 @@ ActiveRecord::Schema.define(version: 20170617210351) do
     t.index ["campus_id"], name: "index_courses_on_campus_id"
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.integer "shift"
+    t.time "start"
+    t.time "end"
+    t.bigint "campus_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campus_id"], name: "index_schedules_on_campus_id"
+  end
+
   create_table "semesters", force: :cascade do |t|
     t.string "year"
     t.string "semester"
     t.date "start_date"
     t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teachers", primary_key: "registration", force: :cascade do |t|
@@ -62,6 +85,8 @@ ActiveRecord::Schema.define(version: 20170617210351) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "campus_schedules", "campus"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "courses", "campus"
+  add_foreign_key "schedules", "campus"
 end
