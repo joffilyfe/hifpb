@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Detalhes do Semestre</h1>
+  </div>
+</div><!--/.row-->
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body" style="text-align: center">
+        <div class="row">
+          <div class="col-md-4">
+            <b>Periodo</b>
+          </div>
+          <div class="col-md-4">
+            <b>Data de inicio</b>
+          </div>
+          <div class="col-md-4">
+            <b>Data de termino</b>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= @semester.id %>
+          </div>
+          <div class="col-md-4">
+            <%= @semester.start_date.strftime('%d/%b/%y') %>
+          </div>
+          <div class="col-md-4">
+            <%= @semester.end_date.strftime('%d/%b/%y') %>
+          </div>
+        </div>
+      </div> <!-- panel-body -->
+    </div> <!-- panel panel-default -->
+  </div>
+</div> <!--/.row-->
+</table>

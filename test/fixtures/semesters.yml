@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 2017
+  semester: 1
+  start_date: 2017-06-01
+  end_date: 2017-06-30
+
+two:
+  year: 2017
+  semester: 2
+  start_date: 2017-07-01
+  end_date: 2017-07-29
