@@ -17,5 +17,9 @@ Rails.application.routes.draw do
     resources :course_subject, only: [:index], path: 'disciplinas' do
         post 'importar', to: 'course_subject#import', on: :collection
     end
+
+    resources :teacher, only: [:index], path: 'professores' do
+        post 'importar', to: 'teacher#import', on: :collection
+    end
   end
 end
