@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
     resources :semesters
 
-    resource :campus do
-      get 'importar', to: 'campus#import', as: 'importar_campus'
+    resources :campus do
+      get 'importar', to: 'campus#import', on: :collection
     end
 
     resource :courses do

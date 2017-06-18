@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Admin::CourseControllerTest < ActionDispatch::IntegrationTest
   def setup
-    get importar_campus_admin_campus_url
+    get importar_admin_campus_index_url
   end
 
   test 'should import courses from suap' do
