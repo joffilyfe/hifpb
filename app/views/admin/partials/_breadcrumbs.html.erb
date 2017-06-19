@@ -1,0 +1,26 @@
+<div class="row">
+
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to(admin_path) do %>
+      <svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg>
+      <% end %>
+    </li>
+
+    <%- request.fullpath.remove('/admin/').split('/').each do |path| %>
+      <% if request.fullpath == admin_path %>
+      <li class="active">
+        Dashboard
+      </li>
+      <% elsif path == request.fullpath.remove('/admin/').split('/').last %>
+      <li class="active">
+        <%= path.capitalize %>
+      </li>
+      <% else %>
+      <li>
+        <%= path.capitalize %>
+      </li>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
