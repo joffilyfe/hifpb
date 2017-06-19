@@ -1,6 +1,5 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Cursos</h1>
 	</div>
 </div><!--/.row-->
 
@@ -25,14 +24,13 @@
 		        <% end %>
 			</div>
 			<div class="panel-body">
-				<table class="table table-hover">
+				<table data-toggle="table" id="table-import" data-search="true" data-pagination="true">
 					<thead>
 						<th>#</th>
 						<th>Nome</th>
 						<th>Descrição</th>
 						<th>Código</th>
 						<th>Importado em</th>
-						<th>Atualizado em</th>
 					</thead>
 
 					<tbody>
@@ -42,7 +40,6 @@
 							<td><%= campi.name %></td>
 							<td><%= campi.description %></td>
 							<td><%= campi.code %></td>
-							<td><%= campi.created_at %></td>
 							<td><%= campi.updated_at %></td>
 						</tr>
 						<% end %>
