@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618110558) do
+ActiveRecord::Schema.define(version: 20170619102032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(version: 20170618110558) do
     t.datetime "updated_at", null: false
     t.index ["campus_id", "start", "end"], name: "index_campus_schedules_on_campus_id_and_start_and_end", unique: true
     t.index ["campus_id"], name: "index_campus_schedules_on_campus_id"
+  end
+
+  create_table "classrooms", force: :cascade do |t|
+    t.string "name"
+    t.integer "code"
+    t.bigint "course_id"
+    t.bigint "course_subject_id"
+    t.bigint "teacher_id"
+    t.integer "semester"
+    t.text "observations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_classrooms_on_course_id"
+    t.index ["course_subject_id"], name: "index_classrooms_on_course_subject_id"
+    t.index ["teacher_id"], name: "index_classrooms_on_teacher_id"
   end
 
   create_table "course_subjects", force: :cascade do |t|
@@ -57,16 +72,6 @@ ActiveRecord::Schema.define(version: 20170618110558) do
     t.index ["campus_id"], name: "index_courses_on_campus_id"
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.integer "shift"
-    t.time "start"
-    t.time "end"
-    t.bigint "campus_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["campus_id"], name: "index_schedules_on_campus_id"
-  end
-
   create_table "semesters", force: :cascade do |t|
     t.string "year"
     t.string "semester"
@@ -86,7 +91,8 @@ ActiveRecord::Schema.define(version: 20170618110558) do
   end
 
   add_foreign_key "campus_schedules", "campus"
+  add_foreign_key "classrooms", "course_subjects"
+  add_foreign_key "classrooms", "courses"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "courses", "campus"
-  add_foreign_key "schedules", "campus"
 end
