@@ -43,46 +43,40 @@
           <svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>Dashboard
         <% end %>
       </li>
+      <li>
+        <%= link_to(admin_campus_index_path) do %>
+        <svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg> Campi
+        <% end %>
+      </li>
+      <li>
+        <%= link_to(admin_courses_path) do %>
+          <svg class="glyph stroked brush"><use xlink:href="#stroked-brush"/></svg> Cursos
+        <% end %>
+      </li>
+      <li>
+        <%= link_to(admin_course_subject_index_path) do %>
+          <svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Disciplinas
+        <% end %>
+      </li>
+      <li>
+        <%= link_to(admin_teacher_index_path) do %>
+          <svg class="glyph stroked heart"><use xlink:href="#stroked-heart"/></svg> Professores
+        <% end %>
+      </li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1">
-          <svg class="glyph stroked download"><use xlink:href="#stroked-download"/></svg> Importar</span>
-        </a>
-        <ul class="children collapse" id="sub-item-1">
-          <li>
-            <%= link_to(admin_campus_index_path) do %>
-              <svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg> Campi
-            <% end %>
-          </li>
-          <li>
-            <%= link_to("Cursos", admin_courses_path) %>
-          </li>
-          <li>
-            <%= link_to("Disciplinas", admin_course_subject_index_path) %>
-          </li>
-          <li>
-            <%= link_to("Professores", admin_teacher_index_path) %>
-          </li>
-        </ul>
-      </li> <!-- opções para importação -->
-    </li>
-    <li class="parent ">
-      <a href="#">
-        <span data-toggle="collapse" href="#sub-item-2">
-        <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres</span>
-      </a>
-      <ul class="children collapse" id="sub-item-2">
-        <li>
-          <%= link_to("Cadastrar Semestre", new_admin_semester_path) %>
+          <span data-toggle="collapse" href="#sub-item-2">
+            <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres</span>
+          </a>
+          <ul class="children collapse" id="sub-item-2">
+            <li>
+              <%= link_to("Cadastrar Semestre", new_admin_semester_path) %>
+            </li>
+            <li>
+              <%= link_to("Listar Semestres", admin_semesters_path) %>
+            </li>
+          </ul>
         </li>
-        <li>
-          <%= link_to("Listar Semestres", admin_semesters_path) %>
-        </li>
-      </ul>
-    </li>
-      <li>
-      </li>
-      <li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Calendário</a></li>
     </ul>
   </div><!--/.sidebar-->
 
