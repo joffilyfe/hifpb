@@ -20,7 +20,7 @@
 
           <div class="row">
             <div class="col-md-6">
-              <%= select_year Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 5, :field_name => :year, :prefix => :semester %>
+              <%= f.select :year, (Time.now.year - 5)..Time.now.year %>
             </div>
             <div class="col-md-6">
               <%= f.select :semester, 1..2 %>
