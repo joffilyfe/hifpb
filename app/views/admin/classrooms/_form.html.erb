@@ -1,0 +1,82 @@
+<style>
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+</style>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8">
+            <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>
+            <%- if not classroom.nil? and classroom.name and not classroom.name.empty?  %>
+              <%= classroom.name %>
+            <% else %>
+              Nova turma
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <%= form_for([:admin, classroom]) do |form| %>
+        <% if classroom.errors.any? %>
+          <ul class="alert alert-danger">
+            <% classroom.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :name, "Nome" %>
+          <%= form.text_field :name, id: :classroom_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :code, "Código" %>
+          <%= form.number_field :code, id: :classroom_code, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :course_id, "Curso" %>
+          <%= form.select("course_id", options_from_collection_for_select(Course.all, 'id', 'description'), {}, class: "selectpicker", data: {'live-search' => 'true', width: "auto"}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :course_subject_id, "Disciplina" %>
+          <%= form.select("course_subject_id", options_from_collection_for_select(CourseSubject.all, 'id', 'description'), {}, class: "selectpicker", data: {'live-search' => 'true', width: "auto"}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :teacher_id, "Professor" %>
+          <%= form.select("teacher_id", options_from_collection_for_select(Teacher.all, 'registration', 'name'), {}, class: "selectpicker", data: {'live-search' => 'true', width: "auto"}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :semester, "Período" %>
+          <%= form.number_field :semester, id: :classroom_semester, class: "form-control"  %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :observations, "Observações" %>
+          <%= form.text_area :observations, id: :classroom_observations, class: "form-control"  %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit 'Save', class: 'btn btn-success pull-right' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$('#xclassroom_course_id').selectpicker({
+  size: 100
+});
+</script>
+
+

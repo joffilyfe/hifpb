@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
 
     resources :semesters
+    resources :classrooms, path: 'turmas'
 
     resources :campus do
       get 'importar', to: 'campus#import', on: :collection
