@@ -7,33 +7,18 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-default">
-      <%= form_for :semester, class: 'form-control', url: admin_semesters_path do |f| %>
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8">
+            Semestre <%= @semester.id %>
+          </div>
+        </div>
+      </div>
+      <%= form_for @semester, url: admin_semester_path(@semester), html: { method: :patch } do |f| %>
         <div class="panel-body" style="text-align: center">
           <div class="row">
-            <div class="col-md-6">
-              Ano
-            </div>
-            <div class="col-md-6">
-              Semestre
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <%= select_year Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 5, :field_name => :year, :prefix => :semester %>
-            </div>
-            <div class="col-md-6">
-              <%= f.select :semester, 1..2 %>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              Início do Semestre
-            </div>
-            <div class="col-md-6">
-              Término do Semestre
-            </div>
+            <div class="col-md-6">Início do Semestre</div>
+            <div class="col-md-6">Término do Semestre</div>
           </div>
 
           <div class="row">

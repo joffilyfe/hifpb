@@ -35,7 +35,8 @@ class Admin::SemestersController < Admin::AdminController
     if @semester.update(semester_params)
       redirect_to admin_semesters_path
     else
-      render 'new'
+      flash[:danger] = @semester.errors.full_messages.to_sentence
+      render 'edit'
     end
   end
 
