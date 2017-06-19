@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  maximum_capacity: 25
+  amount_resources: 32
+  status: true
+  name: Sala-01
+  initials: S-01
+
+two:
+  maximum_capacity: 30
+  amount_resources: 35
+  status: false
+  name: Sala-02
+  initials: S-02

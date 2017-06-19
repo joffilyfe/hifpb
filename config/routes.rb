@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     resources :semesters
     resources :classrooms, path: 'turmas'
+    resources :schoolrooms, path: 'salas'
 
     resources :campus do
       get 'importar', to: 'campus#import', on: :collection
