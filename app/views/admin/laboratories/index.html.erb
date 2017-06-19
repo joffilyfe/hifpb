@@ -10,45 +10,49 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-md-8">
-            <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Lista de Laboratórios
+            <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Laboratórios
           </div>
-          <%= link_to('Novo Laboratório', new_admin_laboratory_path, class: "btn btn-success pull-right")%>
+          <div class="col-md-4">
+            <%= link_to('Novo Laboratório', new_admin_laboratory_path, class: "btn btn-success pull-right")%>
+          </div>
         </div>
       </div>
       <div class="panel-body">
-        <table data-toggle="table" id="table-import" class="table table-hover">
-          <tr>
+        <table data-toggle="table" id="table-import" data-search="true" data-pagination="true">
+          <thead>
             <th>Id</th>
             <th>Nome</th>
             <th>Sigla</th>
-            <th colspan="3">Ações</th>
-          </tr>
+            <th colspan="3" style="text-align:center">Ações</th>
+          </thead>
 
-          <% @laboratories.each do |laboratory| %>
+          <tbody>
+            <% @laboratories.each do |laboratory| %>
             <tr>
               <td><%= laboratory.id %></td>
               <td><%= laboratory.name %></td>
               <td><%= laboratory.initials %></td>
               <td style="text-align:center">
                 <%= link_to admin_laboratory_path(laboratory), class: "label label-info" do %>
-                  <span>Detalhes</span>
+                <span>Detalhes</span>
                 <% end %>
               </td>
               <td style="text-align:center">
                 <%= link_to edit_admin_laboratory_path(laboratory), class: "label label-primary" do %>
-                  <span>Editar</span>
+                <span>Editar</span>
                 <% end %>
               </td>
               <td style="text-align:center">
                 <%= link_to admin_laboratory_path(laboratory),
-                                      method: :delete,
-                                      data: { confirm: 'Tem certeza que quer apagar laboratório?' },
-                                                        class: "label label-danger" do %>
-                  <span>Excluir</span>
+                method: :delete,
+                data: { confirm: 'Tem certeza que quer apagar laboratório?' },
+                class: "label label-danger" do %>
+                <span>Excluir</span>
                 <% end %>
               </td>
             </tr>
-          <% end %>
+            <% end %>
+          </tbody>
         </table>
       </div>
     </div>

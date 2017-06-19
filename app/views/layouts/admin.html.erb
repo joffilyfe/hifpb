@@ -68,24 +68,22 @@
           <svg class="glyph stroked heart"><use xlink:href="#stroked-heart"/></svg> Professores
         <% end %>
       </li>
-      <li class="parent ">
-        <a href="#">
-          <span data-toggle="collapse" href="#sub-item-2">
-            <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres</span>
-          </a>
-          <ul class="children collapse" id="sub-item-2">
-            <li>
-              <%= link_to("Cadastrar Semestre", new_admin_semester_path) %>
-            </li>
-            <li>
-              <%= link_to("Listar Semestres", admin_semesters_path) %>
-            </li>
-          </ul>
-        </li>
+      <li>
+        <%= link_to(admin_semesters_path) do %>
+          <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres
+        <% end %>
+      </li>
+      <li>
+        <%= link_to(admin_classrooms_path) do %>
+          <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Turmas
+        <% end %>
+      </li>
+
     </ul>
   </div><!--/.sidebar-->
 
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <%= render 'admin/partials/breadcrumbs' %>
     <div class="row">
       <div class="col-md-12">
         <% flash.each do |name, msg| -%>

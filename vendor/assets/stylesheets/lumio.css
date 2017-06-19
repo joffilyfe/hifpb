@@ -1,6 +1,7 @@
 
 body {
-	background: #f1f4f7;
+	/*background: #f1f4f7;*/
+  background: #ececec;
 	padding-top: 50px;
 	color: #5f6468;
 }
@@ -628,6 +629,7 @@ a.bg-danger:hover {
 	background: #e9ecf2;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 	margin: 0 ;
+  margin-bottom: 15px;
 }
 
 h1.page-header {

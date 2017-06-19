@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'dashboard#index'
 
-    resources :semesters, :laboratories
+
+    resources :semesters, path: 'semestres'
+    resources :laboratories, path: 'laboratorios'
+    resources :classrooms, path: 'turmas'
+
 
     resources :campus do
       get 'importar', to: 'campus#import', on: :collection

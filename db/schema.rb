@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 20170619111848) do
     t.index ["campus_id"], name: "index_campus_schedules_on_campus_id"
   end
 
+  create_table "classrooms", force: :cascade do |t|
+    t.string "name"
+    t.integer "code"
+    t.bigint "course_id"
+    t.bigint "course_subject_id"
+    t.bigint "teacher_id"
+    t.integer "semester"
+    t.text "observations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_classrooms_on_course_id"
+    t.index ["course_subject_id"], name: "index_classrooms_on_course_subject_id"
+    t.index ["teacher_id"], name: "index_classrooms_on_teacher_id"
+  end
+
   create_table "course_subjects", force: :cascade do |t|
     t.string "initials"
     t.string "description"
@@ -86,6 +101,8 @@ ActiveRecord::Schema.define(version: 20170619111848) do
   end
 
   add_foreign_key "campus_schedules", "campus"
+  add_foreign_key "classrooms", "course_subjects"
+  add_foreign_key "classrooms", "courses"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "courses", "campus"
 end
