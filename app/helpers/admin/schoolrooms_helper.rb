@@ -1,0 +1,2 @@
+module Admin::SchoolroomsHelper
+end

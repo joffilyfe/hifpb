@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :semesters, path: 'semestres'
     resources :laboratories, path: 'laboratorios'
     resources :classrooms, path: 'turmas'
+    resources :schoolrooms, path: 'salas'
 
 
     resources :campus do

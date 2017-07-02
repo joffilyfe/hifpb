@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Detalhes da sala</h1>
+  </div>
+</div><!--/.row-->
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body" style="text-align: center">
+        <div class="row">
+          <div class="col-md-3">
+            <b>Nome</b>
+          </div>
+          <div class="col-md-3">
+            <b>Sigla</b>
+          </div>
+          <div class="col-md-3">
+            <b>Lotação Maxima</b>
+          </div>
+          <div class="col-md-3">
+            <b>Status</b>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <%= @schoolroom.name %>
+          </div>
+          <div class="col-md-3">
+            <%= @schoolroom.initials %>
+          </div>
+          <div class="col-md-3">
+            <%= @schoolroom.maximum_capacity %>
+          </div>
+          <div class="col-md-3">
+            <% if @schoolroom.status? %>
+              <span class="label label-success">Ativa</span>
+            <% else %>
+              <span class="label label-danger">Inativa</span>
+            <% end %>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <b>Quantidade de Recursos</b>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= @schoolroom.amount_resources %>
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- panel-body -->
+    </div> <!-- panel panel-default -->
+  </div>
+</div> <!--/.row-->
+</table>
