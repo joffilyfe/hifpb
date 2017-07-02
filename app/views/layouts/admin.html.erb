@@ -59,23 +59,19 @@
         <% end %>
       </li>
       <li>
+        <%= link_to(admin_laboratories_path) do %>
+          <svg class="glyph stroked desktop computer and mobile"><use xlink:href="#stroked-desktop-computer-and-mobile"/></svg> Laboratórios
+        <% end %>
+      </li>
+      <li>
         <%= link_to(admin_teacher_index_path) do %>
           <svg class="glyph stroked heart"><use xlink:href="#stroked-heart"/></svg> Professores
         <% end %>
       </li>
-      <li class="parent ">
-        <a href="#">
-          <span data-toggle="collapse" href="#sub-item-2">
-            <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres</span>
-          </a>
-          <ul class="children collapse" id="sub-item-2">
-            <li>
-              <%= link_to("Cadastrar Semestre", new_admin_semester_path) %>
-            </li>
-            <li>
-              <%= link_to("Listar Semestres", admin_semesters_path) %>
-            </li>
-          </ul>
+      <li>
+        <%= link_to(admin_semesters_path) do %>
+          <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres
+        <% end %>
       </li>
       <li>
         <%= link_to(admin_classrooms_path) do %>

@@ -12,45 +12,49 @@
           <div class="col-md-8">
             <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres Letivos
           </div>
+          <div class="col-md-4">
+            <%= link_to('Novo Semestre', new_admin_semester_path, class: "btn btn-success pull-right")%>
+          </div>
         </div>
       </div>
       <div class="panel-body">
-        <table data-toggle="table" id="table-import" class="table table-hover">
-          <tr>
+        <table data-toggle="table" id="table-import" data-search="true" data-pagination="true">
+          <thead>
             <th>Id</th>
             <th>Inicio</th>
             <th>Fim</th>
             <th colspan="3" style="text-align:center">Operações</th>
-          </tr>
-
-          <% @semesters.each do |semester| %>
+          </thead>
+          <tbody>
+            <% @semesters.each do |semester| %>
             <tr>
               <td><%= semester.id %></td>
               <td><%= semester.start_date.strftime('%d/%b/%Y') %></td>
               <td><%= semester.end_date.strftime('%d/%b/%Y') %></td>
               <td style="text-align:center">
                 <%= link_to admin_semester_path(semester), class: "label label-info" do %>
-                  <span>Detalhes</span>
+                <span>Detalhes</span>
                 <% end %>
               </td>
               <td style="text-align:center">
                 <%= link_to edit_admin_semester_path(semester), class: "label label-primary" do %>
-                  <span>Editar</span>
+                <span>Editar</span>
                 <% end %>
               </td>
               <td style="text-align:center">
                 <%= link_to admin_semester_path(semester),
-                                      method: :delete,
-                                      data: { confirm: 'Tem certeza que quer apagar
-                                                        semestre letivo?' },
-                                                        class: "label label-danger" do %>
+                method: :delete,
+                data: { confirm: 'Tem certeza que quer apagar
+                  semestre letivo?' },
+                  class: "label label-danger" do %>
                   <span>Excluir</span>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
