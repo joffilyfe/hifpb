@@ -16,19 +16,16 @@
       </div>
       <%= form_for @semester, url: admin_semester_path(@semester), html: { method: :patch } do |f| %>
         <div class="panel-body" style="text-align: center">
-          <div class="row">
-            <div class="col-md-6">Início do Semestre</div>
-            <div class="col-md-6">Término do Semestre</div>
-          </div>
-
-          <div class="row">
+         
+					<div class="row">
             <div class="col-md-6">
-              <%= f.date_field :start_date, class: 'form-control' %>
+              <%= f.select :year, (Time.now.year - 5)..Time.now.year %>
             </div>
             <div class="col-md-6">
-              <%= f.date_field :end_date, class: 'form-control' %>
+              <%= f.select :semester, 1..2 %>
             </div>
           </div>
+					
           <div class="row">
             <div class="col-md-12">
               <%= f.submit 'Salvar', class: 'btn btn-success' %>

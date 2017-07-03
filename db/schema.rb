@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170619140253) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
-    t.integer "code"
+    t.string "code"
     t.bigint "course_id"
     t.bigint "course_subject_id"
     t.bigint "teacher_id"
