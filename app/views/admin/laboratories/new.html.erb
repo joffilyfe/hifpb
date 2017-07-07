@@ -1,8 +1,3 @@
-
-<!-- <h1 class="page-header">Cadastrar Laboratório</h1> -->
-
-
-
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-default">
@@ -13,25 +8,25 @@
             <%= form_for :laboratory, url: admin_laboratories_path do |f| %>
 
             <div class="form-group ">
-              <%= f.label :name, class: "col-sm-2 control-label"%>
+              <%= f.label :name, "Nome", class: "col-sm-2 control-label"%>
               <div class="col-sm-4">
                 <%= f.text_field :name , class:"form-control"%>
               </div>
             </div>
             <div class="form-group">
-              <%= f.label :initials, class: "col-sm-2 control-label"%>
+              <%= f.label :initials,"Sigla", class: "col-sm-2 control-label"%>
               <div class="col-sm-2">
                 <%= f.text_field :initials, class:"form-control" %>
               </div>
             </div>
             <div class="form-group">
-              <%= f.label :maximum_capacity, class: "col-sm-2 control-label"%>
+              <%= f.label :maximum_capacity, "Capacidade máxima",class: "col-sm-2 control-label"%>
               <div class="col-sm-2">
                 <%= f.number_field :maximum_capacity, class:"form-control" %>
               </div>
             </div>
             <div class="form-group ">
-              <%= f.label :amount_resources,  class: "col-sm-2 control-label" %>
+              <%= f.label :amount_resources, "Quantidade de recursos", class: "col-sm-2 control-label" %>
               <div class="col-sm-2">
                 <%= f.number_field :amount_resources, class:"form-control"  %>
               </div>

@@ -1,40 +1,38 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Cadatrar Semestre</h1>
-  </div>
-</div><!--/.row-->
-
-<div class="row">
-  <div class="col-lg-10">
     <div class="panel panel-default">
-      <%= form_for :semester, class: 'form-control', url: admin_semesters_path do |f| %>
-        <div class="panel-body" style="text-align: center">
-          <div class="row">
-            <div class="col-md-6">
-              Ano
+      <div class="form-inline">
+        <div class="panel-heading"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Novo semestre</div>
+        <div class="panel-body">
+          <div class="col-md-12">
+            <%= form_for :semester, class: 'form-control', url: admin_semesters_path do |f| %>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= f.label :year, "Ano"%>
+                  <%= f.select :year, (Time.now.year - 5)..Time.now.year , class:"form-control select-semester" %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= f.label :semester, "Semestre"%>
+                  <%= f.select :semester, 1..2 , class:"form-control"%>
+                </div>
+              </div>
+              <div class="col-md-3"></div>
             </div>
-            <div class="col-md-6">
-              Semestre
+            <div class="row">
+              <div class="col-md-5">
+              </div>
+              <div class="col-md-5">
+                <%= f.submit 'Salvar', class: 'btn btn-success button-semester' %>
+              </div>
             </div>
+            <% end %>
           </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <%= f.select :year, (Time.now.year - 5)..Time.now.year %>
-            </div>
-            <div class="col-md-6">
-              <%= f.select :semester, 1..2 %>
-            </div>
-          </div>
-
-         
-          <div class="row">
-            <div class="col-md-12">
-              <%= f.submit 'Salvar', class: 'btn btn-success' %>
-            </div>
-          </div>
-        <% end %>
-      </div><!-- panel-body -->
-    </div><!-- panel panel-default -->
+        </div>
+      </div>
+    </div>
   </div>
 </div>
