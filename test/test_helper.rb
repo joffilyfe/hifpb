@@ -6,4 +6,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def sign_as_admin
+    post login_url({session: {matricula: ENV['SUAP_USER'], password: ENV['SUAP_PASSWORD']}})
+    user = User.find_by(registration: ENV['SUAP_USER'])
+    user.admin = true
+    user.save
+    post login_url({session: {matricula: ENV['SUAP_USER'], password: ENV['SUAP_PASSWORD']}})
+  end
 end
