@@ -31,7 +31,10 @@
               <td><%= campi.id %></td>
               <td><%= campi.sigla %></td>
               <td><%= campi.description %></td>
-              <td><%= link_to('Ver horários', admin_campus_campus_schedules_path(campi), class: 'btn btn-default')%></td>
+              <td>
+                <%= link_to('Ver horários', admin_campus_campus_schedules_path(campi), class: 'btn btn-default')%>
+                <%= link_to('Ver cursos', admin_courses_path, class: 'btn btn-default')%>
+              </td>
             </tr>
             <% end %>
           </tbody>
