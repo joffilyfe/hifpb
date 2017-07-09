@@ -26,7 +26,8 @@ module Admin::ImportHelper
 
     response = http.request(request)
 
-    JSON.parse(response.body)
+    unless response.body.length == 0
+      JSON.parse(response.body)
+    end
   end
-
 end
