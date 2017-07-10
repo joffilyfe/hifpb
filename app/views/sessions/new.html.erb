@@ -1,0 +1,39 @@
+<div class="navbar-header" style="background-color: black; margin-top: -50px;">
+                <a class="navbar-brand"><span>HORÁRIOS</span> IFPB</a>                
+            </div>
+<div class="container" align="center" style="background-color: #ffffff; width: 50%; margin-top: 70px; ">
+
+  <div class="col-md-6 col-md-offset-3" >
+  
+    <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+	<table width="100%" >
+        <thead>
+            <tr>
+                <td align="center" width="70%">
+                    <img src="https://estudante.ifpb.edu.br/media/noticias/imagens/fc99ef06-2bd6-4864-b46e-c37a24898dcc.jpeg.460x272_q85_box-0%2C51%2C641%2C430_crop_detail.jpg" height="120px">
+                </td>
+                <td align="center" width="30%" >
+                    <img src="http://portal.ifrn.edu.br/tec-da-informacao/servicos-ti/arquivos/logomarca-suap/image_preview" height="70px">
+                </td>
+            </tr>
+        </thead>
+    </table>
+	<div class="panel">
+		<h3>Autenticação de Usuário</h3>
+	</div>
+
+    <%= form_for(:session, url: login_path) do |f| %>
+    
+      <%= f.label :matricula %>
+      <%= f.text_field :matricula, class: 'form-control', autofocus: true %>
+
+      <%= f.label :senha %>
+      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+      <br>
+	  <div style="padding-bottom: 30px;">
+      <%= f.submit "Login", class: "btn btn-primary" %>
+	   <button class="btn btn-default" >Cancelar</button>
+      </div>
+    <% end %>
+  </div>
+</div>
