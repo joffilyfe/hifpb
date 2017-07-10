@@ -19,3 +19,7 @@
  *= require admin/import
  *= require admin/campus_schedules
  */
+
+ .button-semester {
+   margin-top: 80px;
+ }

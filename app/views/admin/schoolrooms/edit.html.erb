@@ -1,61 +1,55 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Editar sala</h1>
-  </div>
-</div><!--/.row-->
+    <div class="panel panel-default ">
+      <div class="form-horizontal">
+        <div class="panel-heading"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Sala <%= @schoolroom.initials%></div>
+        <div class="panel-body">
+          <div class="col-md-12">
+            <%= form_for @schoolroom, url: admin_schoolroom_path(@schoolroom), html: { method: :patch } do |f| %>
+            <div class="form-group ">
+              <%= f.label :name, "Nome",class: "col-sm-2 control-label"%>
+              <div class="col-sm-4">
+                <%= f.text_field :name , class:"form-control"%>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :initials, "Sigla", class: "col-sm-2 control-label"%>
+              <div class="col-sm-2">
+                <%= f.text_field :initials, class:"form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :maximum_capacity, "Capacidade máxima",class: "col-sm-2 control-label"%>
+              <div class="col-sm-2">
+                <%= f.number_field :maximum_capacity, class:"form-control" %>
+              </div>
+            </div>
+            <div class="form-group ">
+              <%= f.label :amount_resources,  "Quantidade de recursos",class: "col-sm-2 control-label" %>
+              <div class="col-sm-2">
+                <%= f.number_field :amount_resources, class:"form-control"  %>
+              </div>
+            </div>
 
-<div class="row">
-  <div class="col-lg-12">
-    <div class="panel panel-default">
-      <%= form_for @schoolroom, url: admin_schoolroom_path(@schoolroom), html: { method: :patch } do |f| %>
-        <div class="panel-body" style="text-align: center">
-          <div class="row">
-            <div class="col-md-4">
-              Nome
-            </div>
-            <div class="col-md-4">
-              Lotação Máxima
-            </div>
-            <div class="col-md-4">
-              Quantidade de Recursos
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <%= f.text_field :name %>
-            </div>
-            <div class="col-md-4">
-              <%= f.number_field :maximum_capacity %>
-            </div>
-            <div class="col-md-4">
-              <%= f.number_field :amount_resources %>
-            </div>
-          </div>
+            <div class="form-group ">
+              <%= f.label :status, class: "col-sm-2 control-label" %>
+              <div class="col-sm-2">
+                <%= f.select :status, [['Ativo', true], ['Inativo', false]],  class:"form-control"  %>
+              </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              Status
             </div>
-            <div class="col-md-6">
-              Sigla
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= f.select :status, [['Ativo', true], ['Inativo', false]] %>
-            </div>
-            <div class="col-md-6">
-              <%= f.text_field :initials %>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <%= f.submit 'Salvar', class: 'btn btn-success' %>
+            <div class="row">
+              <div class="col-md-5">
+
+              </div>
+              <div class="col-md-7">
+                <%= f.submit 'Salvar', class: 'btn btn-success' %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div><!-- panel-body -->
-    </div><!-- panel panel-default -->
-  </div>
-</div>
+
+            <% end %>
+          </div><!-- panel-body -->
+        </div><!-- panel panel-default -->
+      </div>
+    </div>
