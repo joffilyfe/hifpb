@@ -4,6 +4,8 @@ class Admin::CampusSchedulesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @campus = campus(:campus)
     @campus_schedule = CampusSchedule.new(shift: 1, start: '2017-06-18 07:00:00', end: '2017-06-18 07:51:00', campus_id: @campus.id)
+
+    sign_as_admin
   end
 
   test 'should get the index page' do

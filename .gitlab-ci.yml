@@ -41,7 +41,7 @@ rails:
   script:
   - bundle exec rake db:migrate
   - bundle exec rake db:migrate RAILS_ENV=test
-  - RAILS_ENV=test rails test
+  - SUAP_PASSWORD=$SUAP_PASSWORD SUAP_USER=$SUAP_USER RAILS_ENV=test rails test
 
 # Deploy
 deploy:

@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class Admin::CourseSubjectControllerTest < ActionDispatch::IntegrationTest
+
+  setup do
+    sign_as_admin
+  end
+
   test "should get show" do
     get admin_course_subject_index_url
     assert_response :success

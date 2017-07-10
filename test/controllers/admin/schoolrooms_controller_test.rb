@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class Admin::SchoolroomsControllerTest < ActionDispatch::IntegrationTest
+
+  setup do
+    sign_as_admin
+  end
+
   test "should not be saved when already exists initials" do
     # skip
     schoolroom = Schoolroom.new(

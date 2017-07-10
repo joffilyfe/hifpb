@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class Admin::TeacherControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_as_admin
+  end
+
   test "should get teachers index" do
     get admin_teacher_index_url
     assert_response :success

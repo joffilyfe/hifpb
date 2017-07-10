@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
 
+  get  '/login',  to: 'sessions#new'
+  post '/login',  to: 'sessions#create'
+  get  '/logout', to: 'sessions#destroy'
+
   # Help to understand routing
   # http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
     get '/', to: 'dashboard#index'
 
-
     resources :semesters, path: 'semestres'
     resources :laboratories, path: 'laboratorios'
     resources :classrooms, path: 'turmas'
     resources :schoolrooms, path: 'salas'
-
+    resources :authorizations, path: 'autorizacoes'
 
     resources :campus do
       get 'importar', to: 'campus#import', on: :collection
