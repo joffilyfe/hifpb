@@ -1,0 +1,22 @@
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-4">
+  
+    <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+
+    <h3>Horário IFPB</h3>
+    <h4>Autenticação de usuário</h4>
+
+    <%= form_for(:session, url: login_path) do |f| %>
+    
+      <%= f.label :matricula %><br />
+      <%= f.text_field :matricula, class: 'form-control', autofocus: true %>
+
+      <%= f.label :senha %><br />
+      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+      
+      <%= f.submit "Login", class: "btn btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>

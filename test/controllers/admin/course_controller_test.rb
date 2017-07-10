@@ -2,6 +2,7 @@ require 'test_helper'
 
 class Admin::CourseControllerTest < ActionDispatch::IntegrationTest
   def setup
+    sign_as_admin
     get importar_admin_campus_index_url
   end
 
