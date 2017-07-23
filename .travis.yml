@@ -1,0 +1,22 @@
+language: ruby
+cache: bundler
+dist: trusty
+rvm:
+  - 2.4.1
+
+before_script:
+  - ruby -v
+  - sudo apt-get update -q && sudo apt-get install nodejs -yqq
+  - gem install bundler  --no-ri --no-rdoc
+  - bundle install -j $(nproc) --path vendor
+  - bundle exec rails db:create RAILS_ENV=test
+  - bundle exec rails db:migrate RAILS_ENV=test
+
+install:
+  bundle install
+
+script:
+  SUAP_PASSWORD=$SUAP_PASSWORD SUAP_USER=$SUAP_USER RAILS_ENV=test rails test
+
+after_success:
+  - CODECLIMATE_API_HOST=https://codebeat.co/webhooks/code_coverage CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN bundle exec codeclimate-test-reporter

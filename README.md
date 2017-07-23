@@ -1,5 +1,8 @@
 # Horários IFPB
 
+[![Build Status](https://travis-ci.org/joffilyfe/hifpb.svg?branch=master)](https://travis-ci.org/joffilyfe/hifpb)
+[![codebeat badge](https://codebeat.co/badges/d72fdcec-2ed2-41d9-95b0-74d61e06e86b)](https://codebeat.co/projects/github-com-joffilyfe-hifpb-master)
+
 O sistema de controle de horários do Intituto Federal da Paraíba é uma plataforma voltada principalmente o gerenciamento dos horários pelos administradores e coordenadores da instituição, porém para o público geral também há funções como ver os horários de disciplinas, professores e salas de aula.
 
 # Pré requisitos
