@@ -2,10 +2,13 @@ class Admin::ClassroomsController < Admin::AdminController
   before_action :set_classroom, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize Classroom
+
     @classrooms = Classroom.all
   end
 
   def show
+    authorize Classroom
   end
 
   def new
@@ -13,9 +16,12 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   def edit
+    authorize Classroom
   end
 
   def create
+    authorize Classroom
+
     @classroom = Classroom.new(classroom_params)
 
     respond_to do |format|
@@ -42,6 +48,8 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   def destroy
+    authorize Classroom
+
     @classroom.destroy
     respond_to do |format|
       format.html { redirect_to admin_classrooms_url, notice: 'Turma excluída com sucesso' }
@@ -50,11 +58,11 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   private
-    def set_classroom
-      @classroom = Classroom.find(params[:id])
-    end
+  def set_classroom
+    @classroom = Classroom.find(params[:id])
+  end
 
-    def classroom_params
-      params.require(:classroom).permit(:name, :code, :course_id, :course_subject_id, :teacher_id, :semester, :observations)
-    end
+  def classroom_params
+    params.require(:classroom).permit(:name, :code, :course_id, :course_subject_id, :teacher_id, :semester, :observations)
+  end
 end

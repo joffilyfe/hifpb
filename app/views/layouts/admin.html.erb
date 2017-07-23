@@ -78,11 +78,15 @@
           <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres
         <% end %>
       </li>
-      <li>
-        <%= link_to(admin_classrooms_path) do %>
+
+      <% if policy(:classroom).index? %>
+        <li>
+          <%= link_to(admin_classrooms_path) do %>
           <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Turmas
-        <% end %>
-      </li>
+          <% end %>
+        </li>
+      <% end %>
+
       <% if user_is_admin? %>
         <li>
           <%= link_to(admin_authorizations_path) do %>
