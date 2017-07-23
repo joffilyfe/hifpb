@@ -48,3 +48,5 @@ bower.json
 # OSX
 
 .DS_Store
+
+coverage/
