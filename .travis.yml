@@ -19,4 +19,5 @@ script:
   SUAP_PASSWORD=$SUAP_PASSWORD SUAP_USER=$SUAP_USER RAILS_ENV=test rails test
 
 after_success:
-  - CODECLIMATE_API_HOST=https://codebeat.co/webhooks/code_coverage CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN bundle exec codeclimate-test-reporter
+  - CODECLIMATE_API_HOST=$CODECLIMATE_TOKEN bundle exec codeclimate-test-reporter
+  - CODECLIMATE_API_HOST=https://codebeat.co/webhooks/code_coverage CODECLIMATE_REPO_TOKEN=$CODEBEAT_TOKEN bundle exec codeclimate-test-reporter
