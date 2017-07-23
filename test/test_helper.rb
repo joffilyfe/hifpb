@@ -16,6 +16,7 @@ class ActiveSupport::TestCase
   def sign_as_admin
     post mock_login_url, params: {registration: "1", admin: true}
   end
+
   def sign_as_user(registration)
     post mock_login_url, params: {registration: registration}
   end
