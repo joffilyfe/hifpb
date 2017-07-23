@@ -2,6 +2,7 @@ class Admin::ClassroomsController < Admin::AdminController
   before_action :set_classroom, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize Classroom
     if params[:course_id]
       @classrooms = Classroom.where(course_id: params[:course_id]).order(:course_id)
     else
@@ -9,11 +10,21 @@ class Admin::ClassroomsController < Admin::AdminController
     end
   end
 
+  def show
+    authorize Classroom
+  end
+
   def new
     @classroom = Classroom.new
   end
 
+  def edit
+    authorize Classroom
+  end
+
   def create
+    authorize Classroom
+
     @classroom = Classroom.new(classroom_params)
 
     respond_to do |format|
@@ -40,6 +51,8 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   def destroy
+    authorize Classroom
+
     @classroom.destroy
     respond_to do |format|
       format.html { redirect_to admin_classrooms_url, notice: 'Turma excluída com sucesso' }
