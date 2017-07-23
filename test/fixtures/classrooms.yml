@@ -1,10 +1,8 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# one:
-#   name: "DEPS"
-#   code: 1
-#   course: tsi
-#   course_subject: course_subject
-#   teacher: professor_um
-#   semester: 1
-#   observations: "This is a good observation"
+one:
+  teacher: one
+  name: "DEPS"
+  code: 1000
+  course: tsi
+  course_subject: course_subject
+  semester: 6
+  observations: "This is a good observation"
