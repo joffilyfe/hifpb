@@ -1,0 +1,19 @@
+language: ruby
+cache: bundler
+dist: trusty
+rvm:
+  - 2.4.1
+
+before_script:
+  - ruby -v
+  - sudo apt-get update -q && sudo apt-get install nodejs -yqq
+  - gem install bundler  --no-ri --no-rdoc
+  - bundle install -j $(nproc) --path vendor
+  - bundle exec rails db:create RAILS_ENV=test
+  - bundle exec rails db:migrate RAILS_ENV=test
+
+install:
+  bundle install
+
+script:
+  SUAP_PASSWORD=$SUAP_PASSWORD SUAP_USER=$SUAP_USER RAILS_ENV=test rails test
