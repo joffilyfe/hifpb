@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   post '/login',  to: 'sessions#create'
   get  '/logout', to: 'sessions#destroy'
 
+  if ENV['RAILS_ENV'] == 'test'
+    post  :mock_login, to: 'sessions#mock_login'
+  end
+
   # Help to understand routing
   # http://guides.rubyonrails.org/routing.html
 
@@ -26,11 +30,11 @@ Rails.application.routes.draw do
     end
 
     resources :course_subject, only: [:index], path: 'disciplinas' do
-        post 'importar', to: 'course_subject#import', on: :collection
+      post 'importar', to: 'course_subject#import', on: :collection
     end
 
     resources :teacher, only: [:index], path: 'professores' do
-        post 'importar', to: 'teacher#import', on: :collection
+      post 'importar', to: 'teacher#import', on: :collection
     end
   end
 end
