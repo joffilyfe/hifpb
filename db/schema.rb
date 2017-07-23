@@ -91,6 +91,20 @@ ActiveRecord::Schema.define(version: 20170728142248) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.string "title"
+    t.string "module"
+    t.string "action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions_users", id: false, force: :cascade do |t|
+    t.bigint "permission_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["permission_id", "user_id"], name: "index_permissions_users_on_permission_id_and_user_id"
+  end
+
   create_table "schoolrooms", force: :cascade do |t|
     t.integer "maximum_capacity"
     t.integer "amount_resources"
