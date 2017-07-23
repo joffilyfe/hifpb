@@ -14,10 +14,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   def sign_as_admin
-    post login_url({session: {matricula: ENV['SUAP_USER'], password: ENV['SUAP_PASSWORD']}})
-    user = User.find_by(registration: ENV['SUAP_USER'])
-    user.admin = true
-    user.save
+    user = User.create(registration: ENV['SUAP_USER'], admin: true)
     post login_url({session: {matricula: ENV['SUAP_USER'], password: ENV['SUAP_PASSWORD']}})
   end
 end
