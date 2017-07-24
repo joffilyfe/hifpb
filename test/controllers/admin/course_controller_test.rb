@@ -21,4 +21,10 @@ class Admin::CourseControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal count, Course.count
   end
+
+  test "should filter courses by campus" do
+    get admin_campus_courses_path(39)
+    assert_not_equal Course.all, assigns(:courses)
+  end
+
 end
