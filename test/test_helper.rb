@@ -14,7 +14,10 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   def sign_as_admin
-    user = User.create(registration: ENV['SUAP_USER'], admin: true)
-    post login_url({session: {matricula: ENV['SUAP_USER'], password: ENV['SUAP_PASSWORD']}})
+    post mock_login_url, params: {registration: "1", admin: true}
+  end
+
+  def sign_as_user(registration)
+    post mock_login_url, params: {registration: registration}
   end
 end
