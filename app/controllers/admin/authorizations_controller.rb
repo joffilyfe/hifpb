@@ -2,6 +2,7 @@ class Admin::AuthorizationsController < Admin::AdminController
   before_action :admin?
 
   def index
+    authorize Authorization
     @authorizations = Authorization.all
   end
   
@@ -10,6 +11,7 @@ class Admin::AuthorizationsController < Admin::AdminController
   end
   
   def create
+    authorize Authorization
     @authorization = Authorization.new(authorization_params)
 
     if @authorization.save
@@ -27,6 +29,7 @@ class Admin::AuthorizationsController < Admin::AdminController
   end
   
   def destroy
+    authorize Authorization
     @authorization = Authorization.find(params[:id])
     @authorization.destroy
 

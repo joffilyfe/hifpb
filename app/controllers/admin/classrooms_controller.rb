@@ -3,7 +3,6 @@ class Admin::ClassroomsController < Admin::AdminController
 
   def index
     authorize Classroom
-
     @classrooms = Classroom.all
   end
 

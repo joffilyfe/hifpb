@@ -2,11 +2,13 @@ class Admin::CoursesController < Admin::AdminController
   include Admin::ImportHelper
 
   def show
+    authorize Course
   	@courses = Course.all.order(:campus_id)
     @campus = Campus.all
   end
 
   def import
+    authorize Course
     response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_cursos/',
       data: course_params})
 

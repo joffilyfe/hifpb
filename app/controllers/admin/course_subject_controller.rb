@@ -2,12 +2,14 @@ class Admin::CourseSubjectController < Admin::AdminController
   include Admin::ImportHelper
 
   def index
+    authorize CourseSubject
   	@course_subjects = CourseSubject.all.includes(:course)
   	@courses = Course.all
   end
 
   def import
-
+    authorize CourseSubject
+    
     begin
       response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_componentes_curriculares/',
         data: course_subject_params})

@@ -2,6 +2,7 @@ class Admin::SemestersController < Admin::AdminController
   include Admin::ImportHelper
 
   def index
+    authorize Semester
     @semesters = Semester.all
   end
 
@@ -10,6 +11,8 @@ class Admin::SemestersController < Admin::AdminController
   end
 
   def create
+    authorize Semester
+
     @semester = Semester.new semester_params
     @semester.id = (@semester.year + @semester.semester).to_i
 
@@ -23,14 +26,18 @@ class Admin::SemestersController < Admin::AdminController
   end
 
   def show
+    authorize Semester
     @semester = Semester.find(params[:id])
   end
 
   def edit
+    authorize Semester
     @semester = Semester.find(params[:id])
   end
 
   def update
+    authorize Semester
+    
     @semester = Semester.find(params[:id])
     if @semester.update(semester_params)
       redirect_to admin_semesters_path
@@ -41,6 +48,8 @@ class Admin::SemestersController < Admin::AdminController
   end
 
   def destroy
+    authorize Semester
+
     @semester = Semester.find(params[:id])
     @semester.destroy
 

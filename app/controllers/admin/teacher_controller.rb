@@ -2,10 +2,12 @@ class Admin::TeacherController < Admin::AdminController
   include Admin::ImportHelper
 
   def index
+    authorize Teacher
     @teachers = Teacher.all
   end
 
   def import
+    authorize Teacher
     begin
       response = request_suap_api({url: 'https://suap.ifpb.edu.br/ldap_backend/info/',
         data: teacher_params})

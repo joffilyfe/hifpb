@@ -2,6 +2,7 @@ class Admin::LaboratoriesController < Admin::AdminController
   include Admin::ImportHelper
 
   def index
+    authorize Laboratory
     @laboratories = Laboratory.all
   end
 
@@ -10,6 +11,7 @@ class Admin::LaboratoriesController < Admin::AdminController
   end
 
   def create
+    authorize Laboratory
     @laboratory = Laboratory.new(laboratory_params)
 
     if @laboratory.save
@@ -20,15 +22,18 @@ class Admin::LaboratoriesController < Admin::AdminController
     end
   end
 
-
   def show
+    authorize Laboratory
     @laboratory = Laboratory.find(params[:id])
   end
+  
   def edit
+    authorize Laboratory
     @laboratory = Laboratory.find(params[:id])
   end
 
   def update
+    authorize Laboratory
     @laboratory = Laboratory.find(params[:id])
 
     if @laboratory.update(laboratory_params)
@@ -40,6 +45,8 @@ class Admin::LaboratoriesController < Admin::AdminController
   end
 
   def destroy
+    authorize Laboratory
+    
     @laboratory = Laboratory.find(params[:id])
     @laboratory.destroy
 

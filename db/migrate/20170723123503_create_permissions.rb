@@ -12,4 +12,6 @@ class CreatePermissions < ActiveRecord::Migration[5.1]
       t.index [:permission_id, :user_id]
     end
   end
+
+  
 end
