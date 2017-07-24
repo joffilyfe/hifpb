@@ -1,7 +1,7 @@
 class ClassroomPolicy < ApplicationPolicy
 
   def index?
-    user.permissions.where(:module => "classroom", :action => "indexx").any? or user.admin?
+    user.permissions.where(:module => "classroom", :action => "index").any? or user.admin?
   end
 
   def show?

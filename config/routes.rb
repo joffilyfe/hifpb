@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     resources :schoolrooms, path: 'salas'
     resources :authorizations, path: 'autorizacoes'
 
+    resources :user, only: [:index, :show, :edit] do
+      resources :permission
+    end
+
     resources :campus do
       get 'importar', to: 'campus#import', on: :collection
       resources :campus_schedules, only: [:index, :new, :create, :destroy], path: 'horarios'

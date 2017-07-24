@@ -2,7 +2,7 @@ class Admin::CourseSubjectController < Admin::AdminController
   include Admin::ImportHelper
 
   def index
-
+    authorize CourseSubject
     if params[:course_id]
       @course_subjects = CourseSubject.where(course_id: params[:course_id]).order(:course_id)
     else
@@ -12,7 +12,7 @@ class Admin::CourseSubjectController < Admin::AdminController
   end
 
   def import
-
+    authorize CourseSubject
     begin
       response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_componentes_curriculares/',
       data: course_subject_params})
