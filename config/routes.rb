@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :campus do
       get 'importar', to: 'campus#import', on: :collection
       resources :campus_schedules, only: [:index, :new, :create, :destroy], path: 'horarios'
+      get :courses, to: 'courses#show'
     end
 
     resource :courses do
@@ -36,5 +37,6 @@ Rails.application.routes.draw do
     resources :teacher, only: [:index], path: 'professores' do
       post 'importar', to: 'teacher#import', on: :collection
     end
+
   end
 end
