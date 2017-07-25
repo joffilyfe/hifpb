@@ -27,4 +27,9 @@ class Admin::CampusControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show all campi" do
+    get admin_campus_index_url
+    assert Campus.all, assigns: @campus
+  end
+
 end
