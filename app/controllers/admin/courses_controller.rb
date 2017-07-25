@@ -2,13 +2,17 @@ class Admin::CoursesController < Admin::AdminController
   include Admin::ImportHelper
 
   def show
-  	@courses = Course.all.order(:campus_id)
+    if params[:campus_id]
+      @courses = Course.where(campus_id: params[:campus_id]).order(:campus_id)
+    else
+      @courses = Course.all.order(:campus_id)
+    end
     @campus = Campus.all
   end
 
   def import
     response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_cursos/',
-      data: course_params})
+    data: course_params})
 
     if response['erro'].nil?
       response.each do |pk, course|
