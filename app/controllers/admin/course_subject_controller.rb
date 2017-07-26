@@ -6,7 +6,7 @@ class Admin::CourseSubjectController < Admin::AdminController
     if params[:course_id]
       @course_subjects = CourseSubject.where(course_id: params[:course_id]).order(:course_id)
     else
-      @course_subjects = CourseSubject.all.includes(:course_id)
+      @course_subjects = CourseSubject.all.includes(:course)
     end
     @courses = Course.all
   end
