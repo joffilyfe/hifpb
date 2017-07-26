@@ -25,4 +25,9 @@ class Admin::CourseSubjectControllerTest < ActionDispatch::IntegrationTest
     assert_match 'Erro ao importar dados', @response.body
   end
 
+  test "should filter subjects by course" do
+    get admin_course_course_subject_url(course_id: 10000)
+    assert_not_equal CourseSubject.where(course_id: 10000), assigns(:course_subject)
+  end
+
 end
