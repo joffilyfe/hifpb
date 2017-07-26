@@ -35,8 +35,8 @@
               <td><%= course.description %></td>
               <td>
                 <%= link_to('Ver disciplinas', admin_course_course_subject_url(course), class: 'btn btn-default')%>
-                <%= link_to('Ver turmas', admin_course_course_subject_url(course), class: 'btn btn-default')%>
-                <%= link_to('Ver aulas', admin_course_course_subject_url(course), class: 'btn btn-default')%>
+                <%= link_to('Ver turmas', admin_course_classrooms_path(course), class: 'btn btn-default')%>
+                <%= link_to('Ver aulas', admin_course_classrooms_url(course), class: 'btn btn-default')%>
               </td>
             </tr>
             <% end %>
