@@ -1,7 +1,7 @@
 class Admin::CoursesController < Admin::AdminController
   include Admin::ImportHelper
 
-  def show
+  def index
     if params[:campus_id]
       @courses = Course.where(campus_id: params[:campus_id]).order(:campus_id)
     else
@@ -28,7 +28,7 @@ class Admin::CoursesController < Admin::AdminController
       flash[:danger] = "Erro ao importar dados"
     end
 
-    redirect_to action: :show
+    redirect_to action: :index
   end
 
   private
