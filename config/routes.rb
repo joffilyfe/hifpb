@@ -23,11 +23,13 @@ Rails.application.routes.draw do
     resources :campus do
       get 'importar', to: 'campus#import', on: :collection
       resources :campus_schedules, only: [:index, :new, :create, :destroy], path: 'horarios'
-      get :courses, to: 'courses#show'
+      get :courses, to: 'courses#index'
     end
 
-    resource :courses do
-      post 'importar', to: 'courses#import'
+    resources :courses do
+      post 'importar', to: 'courses#import', on: :collection
+      get :course_subject, to: 'course_subject#index', path: 'disciplinas'
+      get :classrooms, to: 'classrooms#index', path: 'turmas'
     end
 
     resources :course_subject, only: [:index], path: 'disciplinas' do

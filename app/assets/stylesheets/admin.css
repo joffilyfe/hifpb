@@ -23,3 +23,7 @@
  .button-semester {
    margin-top: 80px;
  }
+
+ a.btn.btn-default {
+   margin: 2px;
+ }
