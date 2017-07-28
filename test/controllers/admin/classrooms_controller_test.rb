@@ -18,7 +18,7 @@ class Admin::ClassroomsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create classroom" do
     assert_difference('Classroom.count') do
-      post admin_classrooms_url, params: { classroom: { code: @admin_classroom.code, course_id: @admin_classroom.course_id, course_subject_id: @admin_classroom.course_subject_id, name: @admin_classroom.name, observations: @admin_classroom.observations, semester: @admin_classroom.semester, teacher_id: @admin_classroom.teacher_id } }
+      post admin_classrooms_url, params: { classroom: { code: @admin_classroom.code, course_id: @admin_classroom.course_id, course_subject_id: @admin_classroom.course_subject_id, name: @admin_classroom.name, semester_id: @admin_classroom.semester_id, teacher_id: @admin_classroom.teacher_id } }
     end
 
     assert_redirected_to admin_classroom_url(Classroom.last)
@@ -43,7 +43,7 @@ class Admin::ClassroomsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update classroom" do
-    patch admin_classroom_url(@admin_classroom), params: { classroom: { code: @admin_classroom.code, course_id: @admin_classroom.course_id, course_subject_id: @admin_classroom.course_subject_id, name: @admin_classroom.name, observations: @admin_classroom.observations, semester: @admin_classroom.semester, teacher_id: @admin_classroom.teacher_id } }
+    patch admin_classroom_url(@admin_classroom), params: { classroom: { code: @admin_classroom.code, course_id: @admin_classroom.course_id, course_subject_id: @admin_classroom.course_subject_id, name: @admin_classroom.name, semester_id: @admin_classroom.semester_id, teacher_id: @admin_classroom.teacher_id } }
     assert_redirected_to admin_classroom_url(@admin_classroom)
   end
 

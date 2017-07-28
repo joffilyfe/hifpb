@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725134627) do
+ActiveRecord::Schema.define(version: 20170728142248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authorizations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_authorizations_on_course_id"
+    t.index ["user_id"], name: "index_authorizations_on_user_id"
+  end
 
   create_table "campus", force: :cascade do |t|
     t.string "description"
@@ -39,12 +48,12 @@ ActiveRecord::Schema.define(version: 20170725134627) do
     t.bigint "course_id"
     t.bigint "course_subject_id"
     t.bigint "teacher_id"
-    t.integer "semester"
-    t.text "observations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "semester_id"
     t.index ["course_id"], name: "index_classrooms_on_course_id"
     t.index ["course_subject_id"], name: "index_classrooms_on_course_subject_id"
+    t.index ["semester_id"], name: "index_classrooms_on_semester_id"
     t.index ["teacher_id"], name: "index_classrooms_on_teacher_id"
   end
 
@@ -140,6 +149,7 @@ ActiveRecord::Schema.define(version: 20170725134627) do
   add_foreign_key "campus_schedules", "campus"
   add_foreign_key "classrooms", "course_subjects"
   add_foreign_key "classrooms", "courses"
+  add_foreign_key "classrooms", "semesters"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "courses", "campus"
 end

@@ -12,16 +12,17 @@
           <div class="col-md-8">
             <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>
             <%- if not classroom.nil? and classroom.name and not classroom.name.empty?  %>
-              <%= classroom.name %>
-            <% else %>
-              Nova turma
+            <%= classroom.name %>
+          <% else %>
+            Nova turma
             <% end %>
           </div>
         </div>
       </div>
       <div class="panel-body">
-        <%= form_for([:admin, classroom]) do |form| %>
-        <% if classroom.errors.any? %>
+        <div class="col-md-12">
+          <%= form_for([:admin, classroom]) do |form| %>
+          <% if classroom.errors.any? %>
           <ul class="alert alert-danger">
             <% classroom.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -62,14 +63,10 @@
         <div class="form-group">
           <%= form.submit 'Save', class: 'btn btn-success pull-right' %>
         </div>
-        <% end %>
       </div>
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
-$('#xclassroom_course_id').selectpicker({
-  size: 100
-});
+  $('#xclassroom_course_id').selectpicker({size: 100});
 </script>

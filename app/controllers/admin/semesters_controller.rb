@@ -57,7 +57,8 @@ class Admin::SemestersController < Admin::AdminController
   end
 
   private
-    def semester_params
-      params.require(:semester).permit(:year, :semester, :start_date, :end_date)
-    end
+  def semester_params
+    params.require(:semester).permit(:year, :semester, :start_date, :end_date)
+  end
+
 end

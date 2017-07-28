@@ -70,6 +70,6 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   def classroom_params
-    params.require(:classroom).permit(:name, :code, :course_id, :course_subject_id, :teacher_id, :semester, :observations)
+    params.require(:classroom).permit(:name, :code, :course_id, :course_subject_id, :teacher_id, :semester_id)
   end
 end
