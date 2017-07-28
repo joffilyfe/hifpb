@@ -1,2 +1,8 @@
 user_a:
   registration: 11111111
+
+user_b:
+  registration: 22222222
+
+user_c:
+  registration: 33333333

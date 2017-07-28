@@ -3,7 +3,7 @@ class Admin::CoursesController < Admin::AdminController
 
   def show
     authorize Course
-  	@courses = Course.all.order(:campus_id)
+  	@courses = policy_scope(Course).order(:campus_id)
     @campus = Campus.all
   end
 

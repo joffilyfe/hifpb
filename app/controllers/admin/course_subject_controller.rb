@@ -3,8 +3,8 @@ class Admin::CourseSubjectController < Admin::AdminController
 
   def index
     authorize CourseSubject
-  	@course_subjects = CourseSubject.all.includes(:course)
-  	@courses = Course.all
+  	@course_subjects = policy_scope(CourseSubject)
+    @courses = Course.where(id: @course_subjects.map { |c| c.course.id })
   end
 
   def import

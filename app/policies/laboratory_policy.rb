@@ -4,15 +4,23 @@ class LaboratoryPolicy < ApplicationPolicy
     user.permissions.where(:module => "laboratory", :action => "index").any? or user.admin?
   end
 
-  def show?
-    user.permissions.where(:module => "laboratory", :action => "show").any? or user.admin?
+  def new?
+    user.permissions.where(:module => "laboratory", :action => "new").any? or user.admin?
   end
 
   def create?
     user.permissions.where(:module => "laboratory", :action => "create").any? or user.admin?
   end
 
+  def show?
+    user.permissions.where(:module => "laboratory", :action => "show").any? or user.admin?
+  end
+
   def edit?
+    user.permissions.where(:module => "laboratory", :action => "edit").any? or user.admin?
+  end
+
+  def update?
     user.permissions.where(:module => "laboratory", :action => "update").any? or user.admin?
   end
 

@@ -3,11 +3,13 @@ class Admin::ClassroomsController < Admin::AdminController
 
   def index
     authorize Classroom
-    @classrooms = Classroom.all
+    @classrooms = policy_scope(Classroom)
   end
 
   def show
-    authorize Classroom
+    if @classrooms.exclude?(@classroom)
+      redirect_to admin_classrooms_path
+    end
   end
 
   def new
@@ -58,6 +60,7 @@ class Admin::ClassroomsController < Admin::AdminController
 
   private
   def set_classroom
+    @classrooms = policy_scope(Classroom)
     @classroom = Classroom.find(params[:id])
   end
 
