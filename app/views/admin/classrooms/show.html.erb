@@ -4,7 +4,8 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-md-8">
-            <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> <%= @classroom.name %>
+            <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>
+            <%= @classroom.name %>
           </div>
           <div class="col-md-4">
             <%= link_to t('Edit'), edit_admin_classroom_path(@classroom), class: "btn btn-success pull-right" %>
@@ -12,43 +13,12 @@
         </div>
       </div>
       <div class="panel-body">
-      <p id="notice"><%= notice %></p>
-
-        <p>
-          <strong>Nome: </strong>
-          <%= @classroom.name %>
-        </p>
-
-        <p>
-          <strong>Identificador:</strong>
-          <%= @classroom.code %>
-        </p>
-
-        <p>
-          <strong>Curso:</strong>
-          <%= @classroom.course.description %>
-        </p>
-
-        <p>
-          <strong>Disciplina:</strong>
-          <%= @classroom.course_subject.description %>
-        </p>
-
-        <p>
-          <strong>Professor:</strong>
-          <%= @classroom.teacher.name %>
-        </p>
-
-        <p>
-          <strong>Período:</strong>
-          <%= @classroom.semester %>
-        </p>
-
-        <p>
-          <strong>Observações:</strong>
-          <%= @classroom.observations %>
-        </p>
-
+        <p><strong>Nome:</strong><%= @classroom.name %></p>
+        <p><strong>Identificador:</strong><%= @classroom.code %></p>
+        <p><strong>Curso:</strong><%= @classroom.course.description %></p>
+        <p><strong>Disciplina:</strong><%= @classroom.course_subject.description %></p>
+        <p><strong>Professor:</strong><%= @classroom.teacher.name %></p>
+        <p><strong>Período:</strong><%= @classroom.semester %></p>
         <%= link_to t('Back'), admin_classrooms_path, class: "btn btn-default" %>
       </div>
     </div>

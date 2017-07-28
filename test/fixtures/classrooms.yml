@@ -4,5 +4,4 @@ one:
   code: 1000
   course: tsi
   course_subject: course_subject
-  semester: 6
-  observations: "This is a good observation"
+  semester: one

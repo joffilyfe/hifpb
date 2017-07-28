@@ -15,14 +15,13 @@
 
         <table data-toggle="table" id="table-import" data-search="true" data-pagination="true">
           <thead>
-              <th>Identificador</th>
-              <th>Nome</th>
+              <th>Identificação</th>
+              <th>Turma</th>
               <th>Curso</th>
               <th>Disciplina</th>
               <th>Professor</th>
               <th>Período</th>
-              <th> </th>
-              <th> </th>
+              <th>Ações </th>
           </thead>
 
           <tbody>
@@ -34,8 +33,10 @@
               <td><%= admin_classroom.course_subject.description %></td>
               <td><%= admin_classroom.teacher.name %></td>
               <td><%= admin_classroom.semester %></td>
-              <td><%= link_to 'Edit', edit_admin_classroom_path(admin_classroom), class: "btn btn-default" %></td>
-              <td><%= link_to 'Delete', admin_classroom_path(admin_classroom), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <td>
+                <%= link_to 'Edit', edit_admin_classroom_path(admin_classroom), class: "btn btn-default" %>
+                <%= link_to 'Delete', admin_classroom_path(admin_classroom), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+              </td>
             </tr>
             <% end %>
           </tbody>
