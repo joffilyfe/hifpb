@@ -17,8 +17,8 @@ class CoursePolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    user.permissions.where(:module => "course", :action => "show").any? or user.admin?
+  def index?
+    user.permissions.where(:module => "course", :action => "index").any? or user.admin?
   end
 
   def import?

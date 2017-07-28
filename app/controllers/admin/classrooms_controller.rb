@@ -10,6 +10,11 @@ class Admin::ClassroomsController < Admin::AdminController
     if @classrooms.exclude?(@classroom)
       redirect_to admin_classrooms_path
     end
+    if params[:course_id]
+      @classrooms = policy_scope(Classroom).where(course_id: params[:course_id]).order(:course_id)
+    else
+      @classrooms = policy_scope(Classroom).order(:course_id)
+    end
   end
 
   def new

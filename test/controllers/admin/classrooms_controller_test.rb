@@ -56,7 +56,11 @@ class Admin::ClassroomsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Classroom.count', -1) do
       delete admin_classroom_url(@admin_classroom)
     end
-
     assert_redirected_to admin_classrooms_url
+  end
+
+  test "should filter classroms by course" do
+    get admin_course_classrooms_path(course_id: 10000)
+    assert_not_equal Classroom.where(course_id: 10000), assigns(:classroms)
   end
 end

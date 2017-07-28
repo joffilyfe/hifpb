@@ -21,4 +21,22 @@ class Admin::CourseControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal count, Course.count
   end
+
+  test "should not import courses without params" do
+    post importar_admin_courses_url
+    assert_response :redirect
+    follow_redirect!
+    assert_match /Erro ao importar dados/, @response.body
+  end
+
+  test "should filter courses by campus" do
+    get admin_campus_courses_path(39)
+    assert_not_equal Course.where(campus_id: 39), assigns(:courses)
+  end
+
+  test "should show all courses" do
+    get admin_courses_url
+    assert Course.all, assigns: @courses
+  end
+
 end

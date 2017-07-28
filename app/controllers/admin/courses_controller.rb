@@ -1,16 +1,20 @@
 class Admin::CoursesController < Admin::AdminController
   include Admin::ImportHelper
 
-  def show
+  def index
     authorize Course
-  	@courses = policy_scope(Course).order(:campus_id)
+    if params[:campus_id]
+      @courses = policy_scope(Course).where(campus_id: params[:campus_id]).order(:campus_id)
+    else
+      @courses = policy_scope(Course).order(:campus_id)
+    end
     @campus = Campus.all
   end
 
   def import
     authorize Course
     response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_cursos/',
-      data: course_params})
+    data: course_params})
 
     if response['erro'].nil?
       response.each do |pk, course|
@@ -26,7 +30,7 @@ class Admin::CoursesController < Admin::AdminController
       flash[:danger] = "Erro ao importar dados"
     end
 
-    redirect_to action: :show
+    redirect_to action: :index
   end
 
   private
