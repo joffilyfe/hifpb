@@ -4,11 +4,12 @@ class Admin::CourseSubjectController < Admin::AdminController
   def index
     authorize CourseSubject
     if params[:course_id]
-      @course_subjects = CourseSubject.where(course_id: params[:course_id]).order(:course_id)
+      @course_subjects = policy_scope(CourseSubject).where(course_id: params[:course_id]).order(:course_id)
+      @courses = Course.where(id: params[:course_id])
     else
-      @course_subjects = CourseSubject.all.includes(:course)
+      @course_subjects = policy_scope(CourseSubject).includes(:course)
+      @courses = Course.all
     end
-    @courses = Course.all
   end
 
   def import

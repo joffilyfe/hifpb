@@ -4,13 +4,15 @@ class Admin::CoursesController < Admin::AdminController
   def index
     authorize Course
     if params[:campus_id]
-      @courses = Course.where(campus_id: params[:campus_id]).order(:campus_id)
+      @courses = policy_scope(Course).where(campus_id: params[:campus_id]).order(:campus_id)
     else
-      @courses = Course.all.order(:campus_id)
+      @courses = policy_scope(Course).order(:campus_id)
     end
+    @campus = Campus.all
+  end
 
   def import
-    authorize Course
+    # authorize Course
     response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_cursos/',
     data: course_params})
 

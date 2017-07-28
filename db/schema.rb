@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170728142248) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
-    t.integer "code"
+    t.string "code"
     t.bigint "course_id"
     t.bigint "course_subject_id"
     t.bigint "teacher_id"
@@ -81,6 +81,12 @@ ActiveRecord::Schema.define(version: 20170728142248) do
     t.index ["campus_id"], name: "index_courses_on_campus_id"
   end
 
+  create_table "courses_users", id: false, force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["course_id", "user_id"], name: "index_courses_users_on_course_id_and_user_id"
+  end
+
   create_table "laboratories", force: :cascade do |t|
     t.integer "maximum_capacity"
     t.integer "amount_resources"
@@ -89,20 +95,6 @@ ActiveRecord::Schema.define(version: 20170728142248) do
     t.string "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "lessons", force: :cascade do |t|
-    t.string "day"
-    t.bigint "laboratory_id"
-    t.bigint "schoolroom_id"
-    t.bigint "classroom_id"
-    t.bigint "campus_schedule_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["campus_schedule_id"], name: "index_lessons_on_campus_schedule_id"
-    t.index ["classroom_id"], name: "index_lessons_on_classroom_id"
-    t.index ["laboratory_id"], name: "index_lessons_on_laboratory_id"
-    t.index ["schoolroom_id"], name: "index_lessons_on_schoolroom_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -162,8 +154,4 @@ ActiveRecord::Schema.define(version: 20170728142248) do
   add_foreign_key "classrooms", "semesters"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "courses", "campus"
-  add_foreign_key "lessons", "campus_schedules"
-  add_foreign_key "lessons", "classrooms"
-  add_foreign_key "lessons", "laboratories"
-  add_foreign_key "lessons", "schoolrooms"
 end

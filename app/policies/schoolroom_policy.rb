@@ -3,15 +3,23 @@ class SchoolroomPolicy < ApplicationPolicy
     user.permissions.where(:module => "schoolroom", :action => "index").any? or user.admin?
   end
 
-  def show?
-    user.permissions.where(:module => "schoolroom", :action => "show").any? or user.admin?
+  def new?
+    user.permissions.where(:module => "schoolroom", :action => "new").any? or user.admin?
   end
 
   def create?
     user.permissions.where(:module => "schoolroom", :action => "create").any? or user.admin?
   end
 
+  def show?
+    user.permissions.where(:module => "schoolroom", :action => "show").any? or user.admin?
+  end
+
   def edit?
+    user.permissions.where(:module => "schoolroom", :action => "edit").any? or user.admin?
+  end
+
+  def update?
     user.permissions.where(:module => "schoolroom", :action => "update").any? or user.admin?
   end
 

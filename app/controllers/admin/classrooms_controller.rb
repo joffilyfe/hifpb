@@ -4,14 +4,16 @@ class Admin::ClassroomsController < Admin::AdminController
   def index
     authorize Classroom
     if params[:course_id]
-      @classrooms = Classroom.where(course_id: params[:course_id]).order(:course_id)
+      @classrooms = policy_scope(Classroom.where(course_id: params[:course_id]))
     else
-      @classrooms = Classroom.all.order(:course_id)
+      @classrooms = policy_scope(Classroom)
     end
   end
 
   def show
-    authorize Classroom
+    if @classrooms.exclude?(@classroom)
+      redirect_to admin_classrooms_path
+    end
   end
 
   def new
@@ -62,6 +64,7 @@ class Admin::ClassroomsController < Admin::AdminController
 
   private
   def set_classroom
+    @classrooms = policy_scope(Classroom)
     @classroom = Classroom.find(params[:id])
   end
 

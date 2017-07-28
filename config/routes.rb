@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :schoolrooms, path: 'salas'
     resources :authorizations, path: 'autorizacoes'
 
-    resources :user, only: [:index, :show, :edit] do
+    resources :user do
       resources :permission
     end
 
