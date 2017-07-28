@@ -2,7 +2,7 @@ class Admin::SemestersController < Admin::AdminController
   include Admin::ImportHelper
 
   def index
-    @semesters = Semester.all
+    @semesters = Semester.all.order(year: :desc)
   end
 
   def new
@@ -17,13 +17,9 @@ class Admin::SemestersController < Admin::AdminController
       @semester.save
       redirect_to admin_semesters_path
     else
-      flash[:danger] = @semester.errors.full_messages.to_sentence
+      flash[:error] = @semester.errors.full_messages.to_sentence
       render 'new'
     end
-  end
-
-  def show
-    @semester = Semester.find(params[:id])
   end
 
   def edit
@@ -49,7 +45,7 @@ class Admin::SemestersController < Admin::AdminController
 
   private
   def semester_params
-    params.require(:semester).permit(:year, :semester, :start_date, :end_date)
+    params.require(:semester).permit(:year, :semester, :status)
   end
 
 end

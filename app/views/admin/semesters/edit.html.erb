@@ -1,38 +1,44 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Editar Semestre</h1>
-  </div>
-</div><!--/.row-->
-
-<div class="row">
-  <div class="col-lg-12">
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="row">
-          <div class="col-md-8">
-            Semestre <%= @semester.id %>
+      <div class="form">
+        <div class="panel-heading">
+          <svg class="glyph stroked calendar">
+            <use xlink:href="#stroked-calendar"></use>
+          </svg>Semestre
+          <%= @semester.to_s%></div>
+        <div class="panel-body">
+          <div class="col-md-12">
+            <%= form_for @semester, url: admin_semester_path(@semester), html: { method: :patch } do |f| %>
+            <div class="row">
+              <div class="form-group">
+                <%= f.label :year, "Ano"%>
+                <%= f.select(:year, (Time.now.year - 5)..Time.now.year, {}, {:class => "form-control"}) %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <%= f.label :semester, "Semestre"%>
+                <%= f.select(:semester, 1..2, {}, {:class => "form-control" }) %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <%= f.label :status, "Status"%>
+                <%= f.select(:status, [['Ativo', true], ['Inativo', false]], {}, {:class => "form-control"}) %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.submit 'Salvar', class: 'btn btn-success' %>
+              </div>
+            </div>
+            <% end %>
           </div>
         </div>
+        <!-- panel-body -->
       </div>
-      <%= form_for @semester, url: admin_semester_path(@semester), html: { method: :patch } do |f| %>
-        <div class="panel-body" style="text-align: center">
-         
-					<div class="row">
-            <div class="col-md-6">
-              <%= f.select :year, (Time.now.year - 5)..Time.now.year %>
-            </div>
-            <div class="col-md-6">
-              <%= f.select :semester, 1..2 %>
-            </div>
-          </div>
-					
-          <div class="row">
-            <div class="col-md-12">
-              <%= f.submit 'Salvar', class: 'btn btn-success' %>
-            </div>
-          </div>
-        <% end %>
-      </div><!-- panel-body -->
-    </div><!-- panel panel-default -->
+      <!-- panel panel-default -->
+    </div>
   </div>
 </div>
