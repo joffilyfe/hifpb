@@ -15,7 +15,7 @@ class Admin::UserController < Admin::AdminController
 		authorize User
 		respond_to do |format|
       		if @user.update(user_params)
-        		format.html { redirect_to admin_url, notice: 'Usuário atualizado com sucesso' }
+        		format.html { redirect_to admin_user_index_path, notice: 'Usuário atualizado com sucesso' }
         		format.json { render :show, status: :ok, location: @user }
       		else
         		format.html { render :edit }

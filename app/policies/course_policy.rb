@@ -1,5 +1,5 @@
 class CoursePolicy < ApplicationPolicy
-  
+
   class Scope < Scope
     attr_reader :user, :course
 
