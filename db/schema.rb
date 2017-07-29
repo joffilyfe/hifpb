@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20170728190357) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authorizations", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_authorizations_on_course_id"
-    t.index ["user_id"], name: "index_authorizations_on_user_id"
-  end
-
   create_table "campus", force: :cascade do |t|
     t.string "description"
     t.string "sigla"
@@ -81,6 +72,12 @@ ActiveRecord::Schema.define(version: 20170728190357) do
     t.index ["campus_id"], name: "index_courses_on_campus_id"
   end
 
+  create_table "courses_users", id: false, force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["course_id", "user_id"], name: "index_courses_users_on_course_id_and_user_id"
+  end
+
   create_table "laboratories", force: :cascade do |t|
     t.integer "maximum_capacity"
     t.integer "amount_resources"
@@ -89,6 +86,20 @@ ActiveRecord::Schema.define(version: 20170728190357) do
     t.string "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.string "title"
+    t.string "module"
+    t.string "action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions_users", id: false, force: :cascade do |t|
+    t.bigint "permission_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["permission_id", "user_id"], name: "index_permissions_users_on_permission_id_and_user_id"
   end
 
   create_table "schoolrooms", force: :cascade do |t|
@@ -125,8 +136,6 @@ ActiveRecord::Schema.define(version: 20170728190357) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "authorizations", "courses"
-  add_foreign_key "authorizations", "users"
   add_foreign_key "campus_schedules", "campus"
   add_foreign_key "classrooms", "course_subjects"
   add_foreign_key "classrooms", "courses"

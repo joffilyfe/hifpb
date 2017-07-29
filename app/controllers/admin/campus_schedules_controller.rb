@@ -1,5 +1,6 @@
 class Admin::CampusSchedulesController < Admin::AdminController
   before_action :set_campus_schedule, only: [:show, :destroy]
+  before_action :set_authorization, only: [:index, :new, :create, :destroy]
 
   def index
     @campus = Campus.find(params[:campus_id])
@@ -26,6 +27,7 @@ class Admin::CampusSchedulesController < Admin::AdminController
   end
 
   def destroy
+    authorize CampusSchedule
     @campus_schedule.destroy
     respond_to do |format|
       format.html { redirect_to admin_campus_campus_schedules_url(@campus), notice: 'Horário removido com sucesso' }
@@ -34,6 +36,9 @@ class Admin::CampusSchedulesController < Admin::AdminController
   end
 
   private
+    def set_authorization
+      authorize CampusSchedule
+    end
 
     def set_campus_schedule
       @campus_schedule = CampusSchedule.find(params[:id])

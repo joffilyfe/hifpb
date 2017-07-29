@@ -1,5 +1,7 @@
 class Admin::SemestersController < Admin::AdminController
   include Admin::ImportHelper
+  before_action :set_semester, only: [:show, :edit, :update, :destroy]
+  before_action :set_authorization, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   def index
     @semesters = Semester.all.order(year: :desc)
@@ -22,12 +24,13 @@ class Admin::SemestersController < Admin::AdminController
     end
   end
 
+  def show
+  end
+
   def edit
-    @semester = Semester.find(params[:id])
   end
 
   def update
-    @semester = Semester.find(params[:id])
     if @semester.update(semester_params)
       redirect_to admin_semesters_path
     else
@@ -37,10 +40,16 @@ class Admin::SemestersController < Admin::AdminController
   end
 
   def destroy
-    @semester = Semester.find(params[:id])
     @semester.destroy
-
     redirect_to admin_semesters_path
+  end
+
+  def set_semester
+    @semester = Semester.find(params[:id])    
+  end
+
+  def set_authorization
+    authorize Semester
   end
 
   private

@@ -3,10 +3,12 @@ class Admin::CampusController < Admin::AdminController
   include Admin::ImportHelper
 
   def index
+    authorize Campus
     @campus = Campus.all.order(id: :asc)
   end
 
   def import
+    authorize Campus
     response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_campus/'})
 
     response.each do |pk, campi|

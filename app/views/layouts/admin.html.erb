@@ -43,53 +43,80 @@
           <svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>Dashboard
         <% end %>
       </li>
+
+      <% if policy(:campus).index? %>
       <li>
         <%= link_to(admin_campus_index_path) do %>
         <svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg> Campi
         <% end %>
       </li>
+      <% end %>
+
+      <% if policy(:course).index? %>
       <li>
         <%= link_to(admin_courses_path) do %>
           <svg class="glyph stroked brush"><use xlink:href="#stroked-brush"/></svg> Cursos
         <% end %>
       </li>
+      <% end %>
+      
+      <% if policy(:course_subject).index? %>
       <li>
         <%= link_to(admin_course_subject_index_path) do %>
           <svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Disciplinas
         <% end %>
       </li>
+      <% end %>
+
+
+      <% if policy(:laboratory).index? %>
       <li>
         <%= link_to(admin_laboratories_path) do %>
           <svg class="glyph stroked desktop computer and mobile"><use xlink:href="#stroked-desktop-computer-and-mobile"/></svg> Laboratórios
         <% end %>
       </li>
+      <% end %>
+
+      <% if policy(:teacher).index? %>
       <li>
         <%= link_to(admin_teacher_index_path) do %>
           <svg class="glyph stroked heart"><use xlink:href="#stroked-heart"/></svg> Professores
         <% end %>
       </li>
+      <% end %>
+
+      <% if policy(:schoolroom).index? %>
       <li>
         <%= link_to(admin_schoolrooms_path) do %>
           <svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Salas
         <% end %>
       </li>
+      <% end %>
+
+      <% if policy(:semester).index? %>
       <li>
         <%= link_to(admin_semesters_path) do %>
           <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg> Semestres
         <% end %>
       </li>
-      <li>
-        <%= link_to(admin_classrooms_path) do %>
-          <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Turmas
-        <% end %>
-      </li>
-      <% if user_is_admin? %>
+      <% end %>
+
+      <% if policy(:classroom).index? %>
         <li>
-          <%= link_to(admin_authorizations_path) do %>
-            <svg class="glyph stroked database "><use xlink:href="#stroked-database"/></svg> Autorizações
+          <%= link_to(admin_classrooms_path) do %>
+          <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Turmas
           <% end %>
         </li>
       <% end %>
+
+      <% if user_is_admin? %>
+      <li>
+        <%= link_to(admin_user_index_path) do %>
+          <svg class="glyph stroked database "><use xlink:href="#stroked-database"/></svg> Usuarios
+        <% end %>
+      </li>
+      <% end %>
+      
 
     </ul>
   </div><!--/.sidebar-->
