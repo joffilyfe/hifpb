@@ -1,38 +1,39 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-default">
-      <div class="form-inline">
-        <div class="panel-heading"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Novo semestre</div>
+      <div class="form">
+        <div class="panel-heading">
+          <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Novo semestre</div>
         <div class="panel-body">
           <div class="col-md-12">
             <%= form_for :semester, class: 'form-control', url: admin_semesters_path do |f| %>
             <div class="row">
-              <div class="col-md-3"></div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <%= f.label :year, "Ano"%>
-                  <%= f.select :year, (Time.now.year - 5)..Time.now.year , class:"form-control select-semester" %>
-                </div>
+              <div class="form-group">
+                <%= f.label :year, "Ano"%>
+                <%= f.select(:year, (Time.now.year - 5)..Time.now.year,{}, {:class => "form-control"})%>
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <%= f.label :semester, "Semestre"%>
-                  <%= f.select :semester, 1..2 , class:"form-control"%>
-                </div>
-              </div>
-              <div class="col-md-3"></div>
             </div>
             <div class="row">
-              <div class="col-md-5">
-              </div>
-              <div class="col-md-5">
-                <%= f.submit 'Salvar', class: 'btn btn-success button-semester' %>
+              <div class="form-group">
+                <%= f.label :semester, "Semestre"%>
+                <%= f.select(:semester, 1..2 ,{}, {:class => "form-control"})%>
               </div>
             </div>
-            <% end %>
+            <div class="row">
+              <div class="form-group">
+                <%= f.label :status, "Status"%>
+                <%= f.select(:status, [['Ativo', true], ['Inativo', false]] ,{} ,{class:"form-control"})%>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.submit 'Salvar', class: 'btn btn-success' %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

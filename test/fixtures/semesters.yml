@@ -3,9 +3,10 @@
 one:
   year: 2017
   semester: 1
-  
+  status: true
+
 
 two:
   year: 2017
   semester: 2
- 
+  status: false
