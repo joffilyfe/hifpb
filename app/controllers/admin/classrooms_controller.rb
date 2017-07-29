@@ -1,22 +1,20 @@
 class Admin::ClassroomsController < Admin::AdminController
   before_action :set_classroom, only: [:show, :edit, :update, :destroy]
+  before_action :set_authorization, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   def index
-    authorize Classroom
     @classrooms = policy_scope(Classroom)
-  end
-
-  def show
-    if params[:course_id]
-      @classrooms = policy_scope(Classroom.where(course_id: params[:course_id]))
-    else
-      @classrooms = policy_scope(Classroom)
-    end
   end
 
   def show
     if @classrooms.exclude?(@classroom)
       redirect_to admin_classrooms_path
+    else
+      if params[:course_id]
+        @classrooms = policy_scope(Classroom.where(course_id: params[:course_id]))
+      else
+        @classrooms = policy_scope(Classroom)
+      end
     end
   end
 
@@ -25,12 +23,9 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   def edit
-    authorize Classroom
   end
 
   def create
-    authorize Classroom
-
     @classroom = Classroom.new(classroom_params)
 
     respond_to do |format|
@@ -57,8 +52,6 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   def destroy
-    authorize Classroom
-
     @classroom.destroy
     respond_to do |format|
       format.html { redirect_to admin_classrooms_url, notice: 'Turma excluída com sucesso' }
@@ -67,6 +60,10 @@ class Admin::ClassroomsController < Admin::AdminController
   end
 
   private
+  def set_authorization
+    authorize Classroom  
+  end
+  
   def set_classroom
     @classrooms = policy_scope(Classroom)
     @classroom = Classroom.find(params[:id])

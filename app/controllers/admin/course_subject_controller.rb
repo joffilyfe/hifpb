@@ -1,11 +1,12 @@
 class Admin::CourseSubjectController < Admin::AdminController
   include Admin::ImportHelper
+  before_action :set_authorization, only: [:index, :import]
 
   def index
-    authorize CourseSubject
     if params[:course_id]
-      @course_subjects = policy_scope(CourseSubject).where(course_id: params[:course_id]).order(:course_id)
       @courses = Course.where(id: params[:course_id])
+      @subjects = CourseSubject.where(course_id: params[:course_id])
+      @course_subjects = policy_scope(@subjects)
     else
       @course_subjects = policy_scope(CourseSubject).includes(:course)
       @courses = Course.all
@@ -13,8 +14,6 @@ class Admin::CourseSubjectController < Admin::AdminController
   end
 
   def import
-    authorize CourseSubject
-
     begin
       response = request_suap_api({url: 'https://suap.ifpb.edu.br/edu/api/receber_componentes_curriculares/',
       data: course_subject_params})
@@ -42,8 +41,11 @@ class Admin::CourseSubjectController < Admin::AdminController
   end
 
   private
+    def set_authorization
+      authorize CourseSubject    
+    end
 
-  def course_subject_params
-    params.permit(:id_curso)
-  end
+    def course_subject_params
+      params.permit(:id_curso)
+    end
 end

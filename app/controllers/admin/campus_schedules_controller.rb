@@ -1,8 +1,8 @@
 class Admin::CampusSchedulesController < Admin::AdminController
   before_action :set_campus_schedule, only: [:show, :destroy]
+  before_action :set_authorization, only: [:index, :new, :create, :destroy]
 
   def index
-    authorize CampusSchedule
     @campus = Campus.find(params[:campus_id])
     @campus_schedules = CampusSchedule.where(campus: @campus).order([:start, :end])
   end
@@ -13,7 +13,6 @@ class Admin::CampusSchedulesController < Admin::AdminController
   end
 
   def create
-    authorize CampusSchedule
     @campus = Campus.find(params[:campus_id])
     @campus_schedule = CampusSchedule.new(campus_schedule_params)
     @campus_schedule.campus = @campus
@@ -37,6 +36,9 @@ class Admin::CampusSchedulesController < Admin::AdminController
   end
 
   private
+    def set_authorization
+      authorize CampusSchedule
+    end
 
     def set_campus_schedule
       @campus_schedule = CampusSchedule.find(params[:id])

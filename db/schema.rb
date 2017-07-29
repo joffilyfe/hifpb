@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20170728142248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authorizations", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_authorizations_on_course_id"
-    t.index ["user_id"], name: "index_authorizations_on_user_id"
-  end
-
   create_table "campus", force: :cascade do |t|
     t.string "description"
     t.string "sigla"
