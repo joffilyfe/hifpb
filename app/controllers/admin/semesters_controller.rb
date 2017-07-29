@@ -49,7 +49,7 @@ class Admin::SemestersController < Admin::AdminController
     @semester = Semester.find(params[:id])    
   end
 
-  def set_semester
+  def set_authorization
     authorize Semester
   end
 
