@@ -16,7 +16,6 @@ class Admin::SchoolroomsController < Admin::AdminController
     if @schoolroom.save
       redirect_to admin_schoolrooms_path
     else
-      flash[:danger] = @schoolroom.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -24,7 +23,7 @@ class Admin::SchoolroomsController < Admin::AdminController
   def show
 
   end
-  
+
   def edit
 
   end
@@ -33,7 +32,6 @@ class Admin::SchoolroomsController < Admin::AdminController
     if @schoolroom.update(schoolroom_params)
       redirect_to admin_schoolrooms_path
     else
-      flash[:danger] = @schoolroom.errors.full_messages.to_sentence
       render 'edit'
     end
   end

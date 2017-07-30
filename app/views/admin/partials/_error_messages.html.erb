@@ -1,0 +1,7 @@
+<% if resource.errors.any? %>
+  <ul class="alert alert-danger">
+    <% resource.errors.each do |attr,msg| %>
+      <li><%= attr if field %> <%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

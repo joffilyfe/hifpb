@@ -8,7 +8,7 @@ class TeacherTest < ActiveSupport::TestCase
   end
 
   test 'should create a valid teacher' do
-    teacher = teachers(:professor_um)
+    teacher = teachers(:one)
     assert teacher.valid?
   end
 end

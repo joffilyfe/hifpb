@@ -1,7 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
 one:
   teacher: one
   name: "DEPS"
   code: 1000
+  course: tsi
+  course_subject: course_subject
+  semester: one
+
+two:
+  teacher: two
+  name: "APE"
+  code: 1001
   course: tsi
   course_subject: course_subject
   semester: one

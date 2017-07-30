@@ -19,7 +19,6 @@ class Admin::SemestersController < Admin::AdminController
       @semester.save
       redirect_to admin_semesters_path
     else
-      flash[:error] = @semester.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -45,7 +44,7 @@ class Admin::SemestersController < Admin::AdminController
   end
 
   def set_semester
-    @semester = Semester.find(params[:id])    
+    @semester = Semester.find(params[:id])
   end
 
   def set_authorization

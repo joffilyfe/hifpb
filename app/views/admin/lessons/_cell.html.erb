@@ -1,0 +1,12 @@
+<%=
+if day.nil?
+  "-"
+else
+  unless day.schoolroom.nil? or day.laboratory.nil?
+    @display = day.laboratory.name.to_s + " ~ " + day.laboratory.name.to_s
+  else
+    @display = day.schoolroom.nil? ? day.laboratory.name : day.schoolroom.name
+  end
+  link_to(@display, edit_admin_classroom_lesson_path(day.classroom, day))
+end
+%>

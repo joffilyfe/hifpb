@@ -1,10 +1,10 @@
-professor_um:
+one:
   name: "Professor numero um"
   campus: "CAMPUS-CZ"
   department: "CSI"
   mail: "professor@ifpb.edu.br"
 
-one:
+two:
   name: 'Joffily'
   campus: 'Bananeiras'
   department: 'N'

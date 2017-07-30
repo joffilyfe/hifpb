@@ -27,7 +27,7 @@ class Admin::CampusSchedulesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy admin_campus_schedule" do
-    schedule = campus_schedules(:one)
+    schedule = campus_schedules(:two)
 
     assert_difference('CampusSchedule.count', -1) do
       delete admin_campus_campus_schedule_path(schedule.campus.id, schedule.id)

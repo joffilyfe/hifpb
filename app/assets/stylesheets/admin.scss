@@ -18,12 +18,24 @@
  *= require bootstrap-select.min
  *= require admin/import
  *= require admin/campus_schedules
- */
+*/
 
- .button-semester {
-   margin-top: 80px;
- }
 
- a.btn.btn-default {
-   margin: 2px;
- }
+.btn {
+  &.btn-default {
+    margin: 2px;
+  }
+}
+
+.form-group {
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+.alert {
+  li {
+    display: block !important;
+  }
+}

@@ -19,14 +19,13 @@ class Admin::LaboratoriesController < Admin::AdminController
     if @laboratory.save
       redirect_to admin_laboratories_path
     else
-      flash[:danger] = @laboratory.errors.full_messages.to_sentence
       render 'new'
     end
   end
 
   def show
   end
-  
+
   def edit
   end
 
@@ -34,7 +33,6 @@ class Admin::LaboratoriesController < Admin::AdminController
     if @laboratory.update(laboratory_params)
       redirect_to admin_laboratories_path
     else
-      flash[:danger] = @laboratory.errors.full_messages.to_sentence
       render 'edit'
     end
   end
@@ -54,7 +52,7 @@ class Admin::LaboratoriesController < Admin::AdminController
     def set_authorization
       authorize Laboratory
     end
-    
+
     def laboratory_params
       params.require(:laboratory).permit(:maximum_capacity, :amount_resources, :status, :name, :initials)
     end

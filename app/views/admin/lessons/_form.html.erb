@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-lg-12">
+
+    <%= render 'admin/partials/error_messages', resource: lesson, field: false %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>
+            Turma <%= @classroom.name %>
+          </div>
+          <% if lesson.valid? %>
+            <div class="col-md-3">
+              <%= link_to 'Deletar aula',  admin_classroom_lesson_path, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir esta aula?' }, class: "btn btn-danger pull-right" %>
+            </div>
+          <% end %>
+          <div class="col-md-3 pull-right">
+            <%= link_to 'Ver horários',  admin_classroom_lessons_path, class: 'btn btn-primary pull-right' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for([:admin, @classroom, lesson]) do |form| %>
+
+        <div class="form-group">
+          <%= form.label :name, "Turma" %>
+          <%= form.text_field "classroom_id", :value => @classroom.id, :readonly => true, id: :classroom_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :day, "Dia" %>
+          <%= form.select(:day, @weekdays.collect { |w| [w, w] }, {}, class: "selectpicker", data: {'live-search' => 'true', width: "auto"}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :schoolroom_id, "Sala" %>
+          <%= form.select(:schoolroom_id, Schoolroom.all.collect {|s| [s.name, s.id]}, {}, class: "selectpicker", data: {'live-search' => 'true', width: "auto"}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :laboratory_id, "Laboratório" %>
+          <%= form.select(:laboratory_id, Laboratory.all.collect {|l| [l.name, l.id]}, {}, class: "selectpicker", data: {'live-search' => 'true', width: "auto"}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :campus_schedule_id, "Horários" %>
+          <%= form.select(:campus_schedule_id, CampusSchedule.all.collect {|cs| [cs.to_s, cs.id]}, {}, class: "selectpicker", data: {'live-search' => 'true', width: "auto"}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit 'Salvar', class: 'btn btn-success pull-right' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#xclassroom_course_id').selectpicker({
+    size: 100
+  });
+</script>

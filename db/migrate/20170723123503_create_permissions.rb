@@ -59,6 +59,12 @@ class CreatePermissions < ActiveRecord::Migration[5.1]
     # Teacher
     Permission.create({title: "Pode ver home de professores", module: "teacher", action: "index"})
     Permission.create({title: "Pode importar professores", module: "teacher", action: "import"})
-  
+
+    # Lessons
+    Permission.create({title: "Pode ver home de aulas", module: "lesson", action: "index"})
+    Permission.create({title: "Pode cadastrar aulas", module: "lesson", action: "create"})
+    Permission.create({title: "Pode atualizar aulas", module: "lesson", action: "update"})
+    Permission.create({title: "Pode remover aulas", module: "lesson", action: "destroy"})
+
   end 
 end

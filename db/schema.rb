@@ -88,6 +88,20 @@ ActiveRecord::Schema.define(version: 20170728190357) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.string "day"
+    t.bigint "laboratory_id"
+    t.bigint "schoolroom_id"
+    t.bigint "classroom_id"
+    t.bigint "campus_schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campus_schedule_id"], name: "index_lessons_on_campus_schedule_id"
+    t.index ["classroom_id"], name: "index_lessons_on_classroom_id"
+    t.index ["laboratory_id"], name: "index_lessons_on_laboratory_id"
+    t.index ["schoolroom_id"], name: "index_lessons_on_schoolroom_id"
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.string "title"
     t.string "module"
@@ -142,4 +156,8 @@ ActiveRecord::Schema.define(version: 20170728190357) do
   add_foreign_key "classrooms", "semesters"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "courses", "campus"
+  add_foreign_key "lessons", "campus_schedules"
+  add_foreign_key "lessons", "classrooms"
+  add_foreign_key "lessons", "laboratories"
+  add_foreign_key "lessons", "schoolrooms"
 end
