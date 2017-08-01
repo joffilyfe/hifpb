@@ -15,11 +15,10 @@ class Admin::SemestersController < Admin::AdminController
     @semester = Semester.new semester_params
     @semester.id = (@semester.year + @semester.semester).to_i
 
-    if @semester.valid?
-      @semester.save
-      redirect_to admin_semesters_path
+    if @semester.valid? and @semester.save
+      redirect_to admin_semesters_path, notice: 'Semestre criado com sucesso'
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -31,7 +30,7 @@ class Admin::SemestersController < Admin::AdminController
 
   def update
     if @semester.update(semester_params)
-      redirect_to admin_semesters_path
+      redirect_to admin_semesters_path, notice: 'Semestre atualizado com sucesso'
     else
       flash[:danger] = @semester.errors.full_messages.to_sentence
       render 'edit'
@@ -40,7 +39,7 @@ class Admin::SemestersController < Admin::AdminController
 
   def destroy
     @semester.destroy
-    redirect_to admin_semesters_path
+    redirect_to admin_semesters_path, notice: 'Semestre removido com sucesso'
   end
 
   def set_semester

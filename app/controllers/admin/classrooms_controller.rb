@@ -46,7 +46,7 @@ class Admin::ClassroomsController < Admin::AdminController
   def update
     respond_to do |format|
       if @classroom.update(classroom_params)
-        format.html { redirect_to admin_classroom_path(@classroom), notice: 'Turma criada com sucesso' }
+        format.html { redirect_to admin_classroom_path(@classroom), notice: 'Turma atualizada com sucesso' }
         format.json { render :show, status: :ok, location: @classroom }
       else
         format.html { render :edit }
