@@ -34,8 +34,22 @@
   }
 }
 
+.form-inline {
+  .form-group {
+    label {
+      display: inline-block;
+    }
+  }
+}
+
 .alert {
   li {
     display: block !important;
+  }
+
+  &.bg-notice {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
   }
 }
