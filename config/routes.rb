@@ -46,5 +46,11 @@ Rails.application.routes.draw do
       post 'importar', to: 'teacher#import', on: :collection
     end
 
+    # urls para relatorios
+    get '/relatorios/',  to: 'reports#index', as: 'reports'
+    get '/relatorios/salas',  to: 'reports#salas', as: 'reports_schoolrooms'
+    get '/relatorios/sala/:id',  to: 'reports#sala', as: 'report_schoolroom'
+    get '/relatorios/laboratorios',  to: 'reports#laboratorios', as: 'reports_laboratories'
+    get '/relatorios/laboratorio/:id',  to: 'reports#laboratorio', as: 'report_laboratory'
   end
 end

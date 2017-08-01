@@ -36,6 +36,13 @@
             </div>
             <br />
             <div class="row">
+              <div class="col-md-4">
+                <%= label_tag("Campus: ")%>
+                <%= @schoolroom.campus.description %>
+              </div>
+            </div>
+            <br />
+            <div class="row">
               <div class="col-md-3">
                 <%= label_tag("Status: ")%>
                 <% if @schoolroom.status? %>

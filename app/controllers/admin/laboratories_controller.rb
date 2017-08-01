@@ -15,11 +15,12 @@ class Admin::LaboratoriesController < Admin::AdminController
   def create
     authorize Laboratory
     @laboratory = Laboratory.new(laboratory_params)
-
-    if @laboratory.save
-      redirect_to admin_laboratories_path
-    else
-      render 'new'
+    respond_to do |format|
+      if @laboratory.save
+        format.html { redirect_to admin_laboratories_path, notice: 'Laboratorio cadastrado com sucesso.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -30,10 +31,12 @@ class Admin::LaboratoriesController < Admin::AdminController
   end
 
   def update
-    if @laboratory.update(laboratory_params)
-      redirect_to admin_laboratories_path
-    else
-      render 'edit'
+    respond_to do |format|
+      if @laboratory.update(laboratory_params)
+        format.html { redirect_to admin_laboratories_path, notice: 'Laboratorio atualizado com sucesso.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
@@ -41,8 +44,6 @@ class Admin::LaboratoriesController < Admin::AdminController
     @laboratory.destroy
     redirect_to admin_laboratories_path
   end
-
-
 
   private
     def set_lab
@@ -54,6 +55,6 @@ class Admin::LaboratoriesController < Admin::AdminController
     end
 
     def laboratory_params
-      params.require(:laboratory).permit(:maximum_capacity, :amount_resources, :status, :name, :initials)
+      params.require(:laboratory).permit(:maximum_capacity, :amount_resources, :status, :name, :initials, :campus_id)
     end
 end

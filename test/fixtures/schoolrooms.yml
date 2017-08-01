@@ -6,6 +6,7 @@ one:
   status: true
   name: Sala-01
   initials: S-01
+  campus: campus
 
 two:
   maximum_capacity: 30
@@ -13,3 +14,12 @@ two:
   status: false
   name: Sala-02
   initials: S-02
+  campus: campus
+
+three:
+  maximum_capacity: 30
+  amount_resources: 35
+  status: false
+  name: Sala-03
+  initials: S-03
+  campus: campus

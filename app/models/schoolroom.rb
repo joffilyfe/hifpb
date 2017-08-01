@@ -4,7 +4,8 @@ class Schoolroom < ApplicationRecord
   validates :amount_resources, :numericality => { :greater_than_or_equal_to => 0 }
   validate :exist_other_with_this_initials
   validate :exist_other_with_this_name
-    has_many :lessons
+  has_many :lessons
+  belongs_to :campus
 
   def exist_other_with_this_initials
     @schoolrooms = Schoolroom.all

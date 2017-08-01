@@ -1,0 +1,7 @@
+<%=
+  if day.nil?
+    "-"
+  else
+    day.schoolroom.nil? ? "-" : day.classroom.name
+  end
+%>

@@ -59,7 +59,7 @@
         <% end %>
       </li>
       <% end %>
-      
+
       <% if policy(:course_subject).index? %>
       <li>
         <%= link_to(admin_course_subject_index_path) do %>
@@ -67,7 +67,6 @@
         <% end %>
       </li>
       <% end %>
-
 
       <% if policy(:laboratory).index? %>
       <li>
@@ -116,7 +115,16 @@
         <% end %>
       </li>
       <% end %>
-      
+
+      <% if user_is_admin? %>
+      <li>
+        <%= link_to(admin_reports_path) do %>
+          <svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Relatórios
+        <% end %>
+      </li>
+      <% end %>
+
+
 
     </ul>
   </div><!--/.sidebar-->

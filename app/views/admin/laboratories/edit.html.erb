@@ -6,7 +6,7 @@
         <div class="panel-heading"><svg class="glyph stroked desktop computer and mobile"><use xlink:href="#stroked-desktop-computer-and-mobile"></use></svg> Editar laboratório</div>
         <div class="panel-body">
           <div class="col-md-12">
-            <%= form_for @laboratory, url: admin_laboratory_path(@laboratory), html: { method: :patch } do |f| %>
+            <%= form_for @laboratory, url: admin_laboratory_path, method: :patch do |f| %>
             <div class="form-group ">
               <%= f.label :name, "Nome", class: "col-sm-2 control-label"%>
               <div class="col-sm-4">
@@ -33,9 +33,17 @@
             </div>
 
             <div class="form-group ">
+              <%= f.label :campus, class: "col-sm-2 control-label" %>
+              <div class="col-sm-2">
+
+                <%= f.select("campus_id", Campus.all.collect { |c| [c.description, c.id]}, {}, class: "selectpicker", data: {width: "auto"}) %>
+              </div>
+            </div>
+
+            <div class="form-group ">
               <%= f.label :status, class: "col-sm-2 control-label" %>
               <div class="col-sm-2">
-                <%= f.select :status, [['Ativo', true], ['Inativo', false]],  class:"form-control"  %>
+                <%= f.select :status, [['Ativo', true], ['Inativo', false]], {}, class: "selectpicker", data: {width: "auto"}  %>
               </div>
 
             </div>

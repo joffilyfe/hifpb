@@ -4,12 +4,22 @@ one:
   maximum_capacity: 1
   amount_resources: 1
   status: false
-  name: MyString
-  initials: MyString
+  name: Info-01
+  initials: I01
+  campus: campus
 
 two:
   maximum_capacity: 1
   amount_resources: 1
   status: false
-  name: MyString
-  initials: MyString
+  name: Info-02
+  initials: I02
+  campus: campus
+
+three:
+  maximum_capacity: 30
+  amount_resources: 35
+  status: false
+  name: Info-03
+  initials: I03
+  campus: campus
