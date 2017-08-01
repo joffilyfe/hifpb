@@ -5,11 +5,10 @@ class Admin::CourseSubjectController < Admin::AdminController
   def index
     if params[:course_id]
       @courses = Course.where(id: params[:course_id])
-      @subjects = CourseSubject.where(course_id: params[:course_id])
-      @course_subjects = policy_scope(@subjects)
+      @course_subjects = policy_scope(CourseSubject).where(course_id: params[:course_id])
     else
       @course_subjects = policy_scope(CourseSubject).includes(:course)
-      @courses = Course.all
+      @courses = policy_scope(Course)
     end
   end
 
@@ -42,7 +41,7 @@ class Admin::CourseSubjectController < Admin::AdminController
 
   private
     def set_authorization
-      authorize CourseSubject    
+      authorize CourseSubject
     end
 
     def course_subject_params
