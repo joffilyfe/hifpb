@@ -6,15 +6,14 @@
           <div class="col-md-8">
             <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Aulas
           </div>
-          <div class="col-md-4">
-
-          </div>
+          <div class="col-md-4"></div>
         </div>
       </div>
       <div class="panel-body">
         <div class="diary-book">
           <div class="content">
             <div class="days">
+              <div class="day -0">Horários</div>
               <div class="day -1">Segunda</div>
               <div class="day -2">Terça</div>
               <div class="day -3">Quarta</div>
@@ -24,19 +23,14 @@
 
             <div class="courses">
               <% @campus_schedules.each do |cs| %>
+                <div class="course day-0"><%= cs.start.strftime("%H:%M")%> - <%=cs.end.strftime("%H:%M") %></div>
                 <% @days.each_with_index do |day, i| %>                 
-                    <%= render 'lab', day: @lessons.find_by(campus_schedule: cs, day: day), index: i + 1 %>
+                    <%= render 'lesson', day: @lessons.find_by(campus_schedule: cs, day: day), index: i + 1 %>
                 <% end %>
               <% end %>
             </div>
           </div>
 
-          <div class="hours">
-            <div class="hour">Horário</div>
-            <% @campus_schedules.each_with_index do |cs, i| %>
-              <div class="hour -<%= i + 1 %>"><%= cs.start.strftime("%H:%M")%> - <%=cs.end.strftime("%H:%M") %></div>
-            <% end %>
-          </div>
         </div>
       </div>
     </div>

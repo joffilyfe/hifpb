@@ -28,13 +28,14 @@
 	 */
 	.diary-book .content .days {
 	    display: grid;
-	    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	}
 	 
 	.diary-book .content .days .day {
-		color: white;
-		font-weight: bold;
 	    background: #289F54;
+		color: white;
+		font-size: 14px;
+		font-weight: bold;
 	    padding: 10px;
 	}
 	 
@@ -44,12 +45,15 @@
 	 */
 	.diary-book .content .courses {
 	    display: grid;
-	    grid-template-columns: repeat(5, 1fr);
+	    grid-template-columns: repeat(6, 1fr);
 	    grid-gap: 0 .35em;
 	    grid-auto-flow: column;
-	    grid-template-areas: "day-1 day-2 day-3 day-4 day-5";
+	    grid-template-areas: "day-0 day-1 day-2 day-3 day-4 day-5";
 	}
-	 
+
+	.diary-book .content .courses .course.day-0 {
+		grid-column: day-0;
+	}	 
 	 
 	.diary-book .content .courses .course.day-1 {
 	    grid-column: day-1;
@@ -77,6 +81,7 @@
 	    justify-content: center;
 	    align-items: center;
 	    background: #e9ecf2;
+		font-size: 10px;
 	    padding: 5px;
 		margin: 3px;
 	}
@@ -85,15 +90,6 @@
 	/*
 	 * Container de horas
 	 */
-
-	.diary-book .hours {
-	    display: grid;
-	    grid-template-columns: 1fr;
-	}
-
-	.diary-book .hours .hour:nth-child(1) {
-	    height: 38px;
-	}
 	 
 	.diary-book .hours .hour {
 	    height: 60px;
