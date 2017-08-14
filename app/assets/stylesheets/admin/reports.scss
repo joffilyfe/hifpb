@@ -1,3 +1,106 @@
 // Place all the styles related to the admin/Reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+	body {
+	    font-family: sans-serif;
+	}
+	 
+	* {
+	    box-sizing: border-box;
+	}
+	 
+	.diary-book {
+	    text-align: center;
+	    width: 80%;
+	    margin: 0 auto;
+	    display: flex;
+	    flex-flow: row-reverse;
+	}
+	 
+	.diary-book .content {
+	    flex: 90;
+	}
+	 
+	 
+	/*
+	 * Container dos dias
+	 */
+	.diary-book .content .days {
+	    display: grid;
+	    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
+	 
+	.diary-book .content .days .day {
+		color: white;
+		font-weight: bold;
+	    background: #289F54;
+	    padding: 10px;
+	}
+	 
+	 
+	/*
+	 * Container das aulas
+	 */
+	.diary-book .content .courses {
+	    display: grid;
+	    grid-template-columns: repeat(5, 1fr);
+	    grid-gap: 0 .35em;
+	    grid-auto-flow: column;
+	    grid-template-areas: "day-1 day-2 day-3 day-4 day-5";
+	}
+	 
+	 
+	.diary-book .content .courses .course.day-1 {
+	    grid-column: day-1;
+	}
+	 
+	.diary-book .content .courses .course.day-2 {
+	    grid-column: day-2;
+	}
+	 
+	.diary-book .content .courses .course.day-3 {
+	    grid-column: day-3;
+	}
+	 
+	.diary-book .content .courses .course.day-4 {
+	    grid-column: day-4;
+	}
+	 
+	.diary-book .content .courses .course.day-5 {
+	    grid-column: day-5;
+	}
+	 
+	.diary-book .content .courses .course {
+	    height: 60px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    background: #e9ecf2;
+	    padding: 5px;
+		margin: 3px;
+	}
+	 
+	 
+	/*
+	 * Container de horas
+	 */
+
+	.diary-book .hours {
+	    display: grid;
+	    grid-template-columns: 1fr;
+	}
+
+	.diary-book .hours .hour:nth-child(1) {
+	    height: 38px;
+	}
+	 
+	.diary-book .hours .hour {
+	    height: 60px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    background: #e9ecf2;
+	    padding: 5px;
+		margin: 3px;
+	}

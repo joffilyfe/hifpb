@@ -6,47 +6,37 @@
           <div class="col-md-8">
             <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Aulas
           </div>
-          <div class="col-md-4">
-
-          </div>
+          <div class="col-md-4"></div>
         </div>
       </div>
       <div class="panel-body">
 
-        <table data-toggle="table" id="table-import">
-          <thead>
-            <th>Horário</th>
-            <th>Segunda</th>
-            <th>Terça</th>
-            <th>Quarta</th>
-            <th>Quinta</th>
-            <th>Sexta</th>
-          </thead>
-          <tbody>
+        <div class="diary-book">
+          <div class="content">
+            <div class="days">
+              <div class="day -1">Segunda</div>
+              <div class="day -2">Terça</div>
+              <div class="day -3">Quarta</div>
+              <div class="day -4">Quinta</div>
+              <div class="day -5">Sexta</div>
+            </div>
 
-            <% @campus_schedules.each do |cs| %>
-            <tr>
-              <td><%= cs.start.strftime("%H:%M")%> ~ <%=cs.end.strftime("%H:%M") %></td>
-              <td>
-                <%= render 'room', day: @monday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'room', day: @tuesday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'room', day: @wednesday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'room', day: @thursday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'room', day: @friday.find_by(campus_schedule: cs) %>
-              </td>
-            </tr>
+            <div class="courses">
+              <% @campus_schedules.each do |cs| %>
+                <% @days.each_with_index do |day, i| %>                 
+                    <%= render 'room', day: @lessons.find_by(campus_schedule: cs, day: day), index: i + 1 %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="hours">
+            <div class="hour">Horário</div>
+            <% @campus_schedules.each_with_index do |cs, i| %>
+              <div class="hour -<%= i + 1 %>"><%= cs.start.strftime("%H:%M")%> - <%=cs.end.strftime("%H:%M") %></div>
             <% end %>
-          </tbody>
-
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

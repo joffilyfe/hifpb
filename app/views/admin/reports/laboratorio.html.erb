@@ -12,41 +12,32 @@
         </div>
       </div>
       <div class="panel-body">
+        <div class="diary-book">
+          <div class="content">
+            <div class="days">
+              <div class="day -1">Segunda</div>
+              <div class="day -2">Terça</div>
+              <div class="day -3">Quarta</div>
+              <div class="day -4">Quinta</div>
+              <div class="day -5">Sexta</div>
+            </div>
 
-        <table data-toggle="table" id="table-import">
-          <thead>
-            <th>Horário</th>
-            <th>Segunda</th>
-            <th>Terça</th>
-            <th>Quarta</th>
-            <th>Quinta</th>
-            <th>Sexta</th>
-          </thead>
-          <tbody>
+            <div class="courses">
+              <% @campus_schedules.each do |cs| %>
+                <% @days.each_with_index do |day, i| %>                 
+                    <%= render 'lab', day: @lessons.find_by(campus_schedule: cs, day: day), index: i + 1 %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
 
-            <% @campus_schedules.each do |cs| %>
-            <tr>
-              <td><%= cs.start.strftime("%H:%M")%> ~ <%=cs.end.strftime("%H:%M") %></td>
-              <td>
-                <%= render 'lab', day: @monday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @tuesday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @wednesday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @thursday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @friday.find_by(campus_schedule: cs) %>
-              </td>
-            </tr>
+          <div class="hours">
+            <div class="hour">Horário</div>
+            <% @campus_schedules.each_with_index do |cs, i| %>
+              <div class="hour -<%= i + 1 %>"><%= cs.start.strftime("%H:%M")%> - <%=cs.end.strftime("%H:%M") %></div>
             <% end %>
-          </tbody>
-
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

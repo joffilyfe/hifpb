@@ -1,4 +1,6 @@
 class Admin::ReportsController < Admin::AdminController
+  before_action :set_days, only: [:professor, :sala, :laboratorio]
+    
   def index
 
   end
@@ -21,22 +23,18 @@ class Admin::ReportsController < Admin::AdminController
 
   def sala
     @schoolroom = Schoolroom.find(params[:id])
-    @monday = Lesson.where(schoolroom: @schoolroom, day: 'Segunda')
-    @tuesday = Lesson.where(schoolroom: @schoolroom, day: 'Terça')
-    @wednesday = Lesson.where(schoolroom: @schoolroom, day: 'Quarta')
-    @thursday = Lesson.where(schoolroom: @schoolroom, day: 'Quinta')
-    @friday = Lesson.where(schoolroom: @schoolroom, day: 'Sexta')
+    @lessons = Lesson.where(schoolroom: @schoolroom)
     @campus_schedules = CampusSchedule.where(campus: @schoolroom.campus)
   end
 
   def laboratorio
     @laboratory = Laboratory.find(params[:id])
-    @monday = Lesson.where(laboratory: @laboratory, day: 'Segunda')
-    @tuesday = Lesson.where(laboratory: @laboratory, day: 'Terça')
-    @wednesday = Lesson.where(laboratory: @laboratory, day: 'Quarta')
-    @thursday = Lesson.where(laboratory: @laboratory, day: 'Quinta')
-    @friday = Lesson.where(laboratory: @laboratory, day: 'Sexta')
+    @lessons = Lesson.where(laboratory: @laboratory)
     @campus_schedules = CampusSchedule.where(campus: @laboratory.campus)
+  end
+
+  def set_days
+    @days = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']  
   end
 
 end

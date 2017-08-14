@@ -1,7 +1,7 @@
-<%=
-  if day.nil?
-    "-"
-  else
-    day.schoolroom.nil? ? "-" : day.classroom.name
-  end
-%>
+<div class="course day-<%= index %>">
+	<% if day.nil?  %>
+		-
+	<% else %>
+	    <%= day.schoolroom.nil? ? "-" : day.classroom.name %>
+	<% end %>
+</div>
