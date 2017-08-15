@@ -24,13 +24,13 @@ class Admin::ReportsController < Admin::AdminController
   def sala
     @schoolroom = Schoolroom.find(params[:id])
     @lessons = Lesson.where(schoolroom: @schoolroom)
-    @campus_schedules = CampusSchedule.where(campus: @schoolroom.campus)
+    @schedules = CampusSchedule.where(campus: @schoolroom.campus)
   end
 
   def laboratorio
     @laboratory = Laboratory.find(params[:id])
     @lessons = Lesson.where(laboratory: @laboratory)
-    @campus_schedules = CampusSchedule.where(campus: @laboratory.campus)
+    @schedules = CampusSchedule.where(campus: @laboratory.campus)
   end
 
   def set_days

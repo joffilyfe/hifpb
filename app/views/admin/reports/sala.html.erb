@@ -10,28 +10,7 @@
         </div>
       </div>
       <div class="panel-body">
-        <div class="diary-book">
-          <div class="content">
-            <div class="days">
-              <div class="day -0">Horários</div>
-              <div class="day -1">Segunda</div>
-              <div class="day -2">Terça</div>
-              <div class="day -3">Quarta</div>
-              <div class="day -4">Quinta</div>
-              <div class="day -5">Sexta</div>
-            </div>
-
-            <div class="courses">
-              <% @campus_schedules.each do |cs| %>
-                <div class="course day-0"><%= cs.start.strftime("%H:%M")%> - <%=cs.end.strftime("%H:%M") %></div>
-                <% @days.each_with_index do |day, i| %>                 
-                    <%= render 'lesson', day: @lessons.find_by(campus_schedule: cs, day: day), index: i + 1 %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          
-        </div>
+        <%= render 'calendar', days: @days, lessons: @lessons, schedules: @schedules %>
       </div>
     </div>
   </div>
