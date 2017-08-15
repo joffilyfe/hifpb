@@ -18,7 +18,15 @@ class Admin::ReportsController < Admin::AdminController
   end
 
   def professor
-    # TO DO
+    @teacher = Teacher.find(params[:id])
+    @classrooms = Classroom.where(teacher: @teacher)
+    @lessons = Lesson.where(classroom: @classrooms)
+    @campus = []
+    @lessons.each do |l|
+      # Fix this!!!
+      @campus << l.laboratory.nil? ? l.schoolroom.campus.description : l.laboratory.campus.description
+    end
+    @schedules = CampusSchedule.where(campus: @campus)
   end
 
   def sala
@@ -36,5 +44,4 @@ class Admin::ReportsController < Admin::AdminController
   def set_days
     @days = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']  
   end
-
 end

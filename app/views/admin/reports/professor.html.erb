@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8">
+            <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Aulas
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <%= render 'calendar', days: @days, lessons: @lessons, schedules: @schedules %>
+      </div>
+    </div>
+  </div>
+</div>

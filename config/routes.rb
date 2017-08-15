@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
     # urls para relatorios
     get '/relatorios/',  to: 'reports#index', as: 'reports'
+    get '/relatorios/professores',  to: 'reports#professores', as: 'reports_teachers'
+    get '/relatorios/professor/:id',  to: 'reports#professor', as: 'report_teacher'
     get '/relatorios/salas',  to: 'reports#salas', as: 'reports_schoolrooms'
     get '/relatorios/sala/:id',  to: 'reports#sala', as: 'report_schoolroom'
     get '/relatorios/laboratorios',  to: 'reports#laboratorios', as: 'reports_laboratories'
