@@ -1,4 +1,4 @@
-<div class="diary-book">
+<div class="diary-book campus-<%= campi.id %>">
   <div class="content">
     <div class="days">
       <div class="day -Horario">Horário</div>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="courses">
-      <% schedules.each do |cs| %>
+      <% CampusSchedule.where(campus: campi).each do |cs| %>
         <div class="hour">
           <%= cs.start.strftime("%H:%M")%> - <%= cs.end.strftime("%H:%M") %>
         </div>

@@ -23,22 +23,23 @@ class Admin::ReportsController < Admin::AdminController
     @lessons = Lesson.where(classroom: @classrooms)
     @campus = []
     @lessons.each do |l|
-      # Fix this!!!
-      @campus << l.laboratory.nil? ? l.schoolroom.campus.description : l.laboratory.campus.description
+      @campus << l.laboratory.campus if not l.laboratory.nil?
+      @campus << l.schoolroom.campus if not l.schoolroom.nil?
     end
-    @schedules = CampusSchedule.where(campus: @campus)
+    @campus = @campus.uniq
+    @schedules = CampusSchedule.where(campus: @campus.first)
   end
 
   def sala
     @schoolroom = Schoolroom.find(params[:id])
     @lessons = Lesson.where(schoolroom: @schoolroom)
-    @schedules = CampusSchedule.where(campus: @schoolroom.campus)
+    @campus = @schoolroom.campus
   end
 
   def laboratorio
     @laboratory = Laboratory.find(params[:id])
     @lessons = Lesson.where(laboratory: @laboratory)
-    @schedules = CampusSchedule.where(campus: @laboratory.campus)
+    @campus = @laboratory.campus
   end
 
   def set_days
