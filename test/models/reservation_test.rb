@@ -15,7 +15,7 @@ class ReservationTest < ActiveSupport::TestCase
     reservation = Reservation.new(
       {"schoolroom"=>schoolrooms(:two),"laboratory"=>laboratories(:two),"date_reservation"=>'18-08-2017',"campus_schedule"=> campus_schedules(:two)}
     )
-    assert_not reservation.save
+    assert reservation.save
   end
 
    test "can_not_make_reservation_less_than_24_hours" do
