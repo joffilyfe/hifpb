@@ -1,3 +1,113 @@
 // Place all the styles related to the admin/Reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$default-green: #289F54;
+
+.main {
+  .actions {
+    margin: 15px 0;
+    border-bottom: 1px solid $default-green;
+
+    .btn-default {
+      border: 0;
+      border-radius: 0;
+      color: $default-green;
+
+      &:hover {
+        background: lighten($default-green, 55);
+      }
+    }
+  }
+}
+
+
+diary-book {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row-reverse;
+
+  .content {
+    flex: 90;
+  }
+}
+
+
+
+//Container dos dias
+
+.diary-book .content .days {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 40px;
+
+  .day {
+    color: white;
+    font-weight: bold;
+    background: #289F54;
+    padding: 10px;
+  }
+}
+
+
+
+// Container das aulas
+.diary-book .content .courses {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas: "Horario Segunda Terca Quarta Quinta Sexta";
+
+  .course {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 5px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-color: #ddd;
+  }
+
+  .hour {
+	height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 5px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-color: #ddd;  
+  }
+
+}
+
+
+.diary-book .hours .hour {
+  grid-column: Horario;
+}
+
+.diary-book .content .courses .course.Segunda {
+  grid-column: Segunda;
+}
+
+.diary-book .content .courses .course.Terca {
+  grid-column: Terca;
+}
+
+.diary-book .content .courses .course.Quarta {
+  grid-column: Quarta;
+}
+
+.diary-book .content .courses .course.Quinta {
+  grid-column: Quinta;
+}
+
+.diary-book .content .courses .course.Sexta {
+  grid-column: Sexta;
+}

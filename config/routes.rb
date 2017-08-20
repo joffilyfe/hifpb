@@ -46,11 +46,14 @@ Rails.application.routes.draw do
       post 'importar', to: 'teacher#import', on: :collection
     end
 
-    # urls para relatorios
-    get '/relatorios/',  to: 'reports#index', as: 'reports'
-    get '/relatorios/salas',  to: 'reports#salas', as: 'reports_schoolrooms'
-    get '/relatorios/sala/:id',  to: 'reports#sala', as: 'report_schoolroom'
-    get '/relatorios/laboratorios',  to: 'reports#laboratorios', as: 'reports_laboratories'
-    get '/relatorios/laboratorio/:id',  to: 'reports#laboratorio', as: 'report_laboratory'
+    scope :relatorios do
+      get '/', to: 'reports#index', as: 'reports'
+      get '/professores',  to: 'reports#professores', as: 'reports_teachers'
+      get '/professor/:id',  to: 'reports#professor', as: 'report_teacher'
+      get '/salas',  to: 'reports#salas', as: 'reports_schoolrooms'
+      get '/sala/:id',  to: 'reports#sala', as: 'report_schoolroom'
+      get '/laboratorios',  to: 'reports#laboratorios', as: 'reports_laboratories'
+      get '/laboratorio/:id',  to: 'reports#laboratorio', as: 'report_laboratory'
+    end
   end
 end

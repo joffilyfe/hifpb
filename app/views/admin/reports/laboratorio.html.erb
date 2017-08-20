@@ -6,47 +6,11 @@
           <div class="col-md-8">
             <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Aulas
           </div>
-          <div class="col-md-4">
-
-          </div>
+          <div class="col-md-4"></div>
         </div>
       </div>
       <div class="panel-body">
-
-        <table data-toggle="table" id="table-import">
-          <thead>
-            <th>Horário</th>
-            <th>Segunda</th>
-            <th>Terça</th>
-            <th>Quarta</th>
-            <th>Quinta</th>
-            <th>Sexta</th>
-          </thead>
-          <tbody>
-
-            <% @campus_schedules.each do |cs| %>
-            <tr>
-              <td><%= cs.start.strftime("%H:%M")%> ~ <%=cs.end.strftime("%H:%M") %></td>
-              <td>
-                <%= render 'lab', day: @monday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @tuesday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @wednesday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @thursday.find_by(campus_schedule: cs) %>
-              </td>
-              <td>
-                <%= render 'lab', day: @friday.find_by(campus_schedule: cs) %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-
-        </table>
+        <%= render 'calendar', days: @days, lessons: @lessons, campi: @campus %>
       </div>
     </div>
   </div>

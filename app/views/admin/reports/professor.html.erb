@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= form_tag(importar_admin_course_subject_index_path, class: 'form-inline') do |f| %>
+        <div class="row">
+          <div class="col-md-8">
+            <%= label_tag("id_campus", "Campus") %>
+            <%= select_tag("id_campus", options_from_collection_for_select(@campus, 'id', 'description'), id: "campus", class: "selectpicker", include_blank: 'Select Campus', data: {width: "50%"}) %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="panel-body">
+        <% @campus.each do |c, i| %>
+        <%= render 'calendar', days: @days, lessons: @lessons, campi: c %>
+        <% end %>
+      </div>
+    </div>
+
+    <script>
+      $(".diary-book").hide();
+      $("#campus").change(function() {
+        var selopt = $(this.children[this.selectedIndex]),
+        val = selopt.attr('value');
+        if(val != null) {
+          var str = ".diary-book.campus-".concat(val);
+          $(".diary-book").hide();
+          $(str).show();
+        }
+      })
+    </script>
+  </div>
+</div>
