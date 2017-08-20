@@ -1,0 +1,19 @@
+<%= render "site/menu" %>
+
+<div id="courses">
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= current_campi.description %></div>
+    <ul class="list-group">
+      <% if @courses.any? %>
+        <% @courses.each do |course| %>
+          <li class="list-group-item"><%= link_to(course.name, schedule_course_path(course: course.id, semester: 1), remote: true) %></li>
+        <% end %>
+      <% else %>
+        <div class="panel-body">
+          Sem cursos para este campus.
+        </div>
+      </ul>
+    <% end %>
+  </div>
+
+</div>

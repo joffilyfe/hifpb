@@ -1,0 +1,184 @@
+// Place all the styles related to the Site controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$default-green: #00420c;
+
+.main {
+  .actions {
+    margin: 15px 0;
+    border-bottom: 1px solid $default-green;
+
+    .btn-default {
+      border: 0;
+      border-radius: 0;
+      color: $default-green;
+
+      &:hover {
+        background: #e7f9ed;
+        // color: #fff;
+      }
+
+      &.active {
+        color: #fff;
+        background: $default-green;
+      }
+    }
+  }
+}
+
+
+.diary-book {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row-reverse;
+
+  .content {
+    flex: 90;
+  }
+}
+
+
+
+//Container dos dias
+
+.diary-book .content .days {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  height: 40px;
+
+  .day {
+    color: white;
+    font-weight: bold;
+    background: #00420c;
+    padding: 10px;
+    &:last-child {
+      border-radius: 0 5px 0 0;
+    }
+  }
+}
+
+
+
+// Container das aulas
+.diary-book .content .courses {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: "Segunda Terca Quarta Quinta Sexta";
+
+  .course {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 5px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-color: #ddd;
+  }
+
+}
+
+
+.diary-book .content .courses .course.Segunda {
+  grid-column: Segunda;
+}
+
+.diary-book .content .courses .course.Terca {
+  grid-column: Terca;
+}
+
+.diary-book .content .courses .course.Quarta {
+  grid-column: Quarta;
+}
+
+.diary-book .content .courses .course.Quinta {
+  grid-column: Quinta;
+}
+
+.diary-book .content .courses .course.Sexta {
+  grid-column: Sexta;
+}
+
+
+
+// Container de horas
+.diary-book .hours {
+  .hour:nth-child(1) {
+    height: 40px;
+    background: $default-green;
+    margin-top: 0;
+    color: #fff;
+    font-weight: 600;
+    border-color: $default-green;
+    border-radius: 5px 0 0 0;
+  }
+
+  .hour {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f3f3f3;
+    padding: 5px;
+    margin: 0;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-color: #bbb;
+  }
+}
+
+.campus-bar {
+  background: #dedede;
+  display: block;
+  margin-bottom: 0;
+  padding: 5px;
+  color: #0d5511;
+
+  .campus-list {
+    margin-bottom: 0;
+    text-align: right;
+    font-size: 0.7em;
+
+    .campus {
+      display: inline-block;
+      padding: 0 5px;
+      margin: 0;
+      border-right: 1px dotted rgba(43, 43, 43, 0.5);
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      a {
+        // color: #fff;
+        color: #0d5511;
+      }
+    }
+
+  }
+}
+
+.courses-container {
+  text-transform: uppercase;
+  grid-gap: 0 15px;
+}
+
+.course-item {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-bottom: 0;
+}
+
+
+.panel {
+  .list-group-item a {
+    text-transform: uppercase;
+  }
+}
+

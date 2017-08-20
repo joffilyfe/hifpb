@@ -1,0 +1,28 @@
+<style>
+  .courses-container {
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 1fr 1fr;*/
+    text-transform: uppercase;
+    grid-gap: 0 15px;
+  }
+  .course-item {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-bottom: 0;
+  }
+</style>
+<% if @courses.any? %>
+  <h1 class="page-header">Cursos no <%= @selected_campus.description %></h1>
+
+  <div class="courses-container">
+    <%- @courses.each do |course| %>
+      <div class="course-item">
+        <%= link_to(course.name, schedule_course_path(course: course.id, semester: 1), remote: true) %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div>
+    <h1>Sem cursos cadastrados para este campus.</h1>
+  </div>
+<% end %>

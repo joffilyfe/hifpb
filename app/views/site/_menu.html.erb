@@ -1,0 +1,16 @@
+<div class="actions clearfix">
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to("Cursos", schedule_courses_path, class: "btn btn-default btn-block btn-lg #{current_page?(schedule_courses_path) ? 'active' : ''}") %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to("Laboratórios", schedule_laboratories_path, class: "btn btn-default btn-block btn-lg #{current_page?(schedule_laboratories_path) ? 'active' : ''}") %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to("Salas", schedule_schoolrooms_path, class: "btn btn-default btn-block btn-lg #{current_page?(schedule_schoolrooms_path) ? 'active' : ''}") %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to("Professores", schedule_teachers_path, class: "btn btn-default btn-block btn-lg #{current_page?(schedule_teachers_path) ? 'active' : ''}") %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+
+<h1 class="page-header"><%= @course.description %></h1>
+<%- if @semesters.any? %>
+  <ul class="nav nav-tabs" style="margin: 15px 0;">
+    <% @semesters.each do |semester| %>
+      <li role="presentation" class="<% if semester.to_s == @semester %> active <% end %>">
+        <%= link_to(semester, schedule_course_path(course: @course.id, semester: semester), remote: true) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'site/calendar', days: @days, lessons: @lessons, schedules: @schedules %>

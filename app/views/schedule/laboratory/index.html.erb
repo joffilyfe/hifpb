@@ -1,0 +1,18 @@
+<%= render "site/menu" %>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><%= current_campi.description %></div>
+  <% if @labs and @labs.any? %>
+    <ul class="list-group">
+      <% @labs.each do |lab| %>
+        <li class="list-group-item"><%= link_to(lab.name, schedule_laboratory_path(lab: lab.id)) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="panel-body">
+      Não há laboratórios disponíveis para consulta.
+    </div>
+  <% end %>
+</div>
+
+

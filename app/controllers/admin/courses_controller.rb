@@ -18,7 +18,29 @@ class Admin::CoursesController < Admin::AdminController
     if response['erro'].nil?
       response.each do |pk, course|
         db_course = Course.find_or_create_by(id: pk.to_i)
-        db_course.name = course['nome']
+        case course['nome']
+          when /CURSOS SUPERIOR [^EM T]*/
+            nome = course['nome'].remove('CURSO SUPERIOR EM ')
+          when /CURSO SUPERIOR DE TECNOLOGIA EM/
+            nome = course['nome'].remove('CURSO SUPERIOR DE TECNOLOGIA EM ')
+          when /TÉCNICO EM/
+            nome = course['nome'].remove('TÉCNICO EM ')
+          when /CURSO DE ESPECIALIZAÇÃO EM/
+            nome = course['nome'].remove('CURSO DE ESPECIALIZAÇÃO EM ')
+          when /CURSO SUPERIOR DE BACHARELADO EM /
+            nome = course['nome'].remove('CURSO SUPERIOR DE BACHARELADO EM ')
+          when /CURSO TÉCNICO EM/
+            nome = course['nome'].remove('CURSO TÉCNICO EM ')
+          else
+            nome = course['nome']
+        end
+
+        case nome
+          when /-/
+            nome = nome.split("-")[0]
+        end
+
+        db_course.name = nome.downcase
         db_course.description = course['descricao']
         db_course.code = course['codigo'].to_i
         db_course.campus_id = course_params[:id_campus].to_i

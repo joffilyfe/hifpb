@@ -1,0 +1,18 @@
+<%= render "site/menu" %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Lista de professores do IFPB</div>
+  <% if @teachers and @teachers.any? %>
+    <ul class="list-group">
+      <% @teachers.each do |teacher| %>
+        <li class="list-group-item"><%= link_to(teacher.name, schedule_teacher_path(teacher: teacher.id)) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="panel-body">
+      Não há professores disponíveis para consulta.
+    </div>
+  <% end %>
+</div>
+
+

@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  root to: 'site#index'
+
+  get :set_campi, to: 'site#set_campi', path: :campi
+
+  namespace :schedule, path: 'horarios' do
+    match :courses, to: 'course#index', via: [:get, :post], path: :cursos
+    get :course, to: 'course#show', path: :curso
+    match :laboratories, to: 'laboratory#index', via: [:get, :post], path: :laboratorios
+    get :laboratory, to: 'laboratory#show', path: :laboratorio
+    match :schoolrooms, to: 'schoolroom#index', via: [:get, :post], path: :salas
+    get :schoolroom, to: 'schoolroom#show', path: :sala
+    match :teachers, to: 'teacher#index', via: [:get, :post], path: :professores
+    get :teacher, to: 'teacher#show', path: :professor
+
+  end
+
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
   get  '/logout', to: 'sessions#destroy'
