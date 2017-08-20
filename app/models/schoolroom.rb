@@ -8,6 +8,13 @@ class Schoolroom < ApplicationRecord
   has_many :reservation
   belongs_to :campus
 
+  def to_s
+    if (self.name == nil)
+        "  -  "
+    end
+    else "#{self.name}"
+  end
+
   def exist_other_with_this_initials
     @schoolrooms = Schoolroom.all
     unless initials.nil?

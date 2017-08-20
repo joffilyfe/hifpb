@@ -19,16 +19,13 @@ class Reservation < ApplicationRecord
 
 
   def can_not_reservation_lesson_schedule_twice
-
+    dia = ''
+    if (date_reservation != nil)
     dia = Date::DAYNAMES[date_reservation.wday]
-
+    end
       @lessons = Lesson.all
 
-        @lessons.each{ |l|
-          if (l.day == dia) && (l.campus_schedule_id == campus_schedule_id) && ((l.laboratory_id == laboratory_id) || (l.schoolroom_id == schoolroom_id) )
-            errors.add(:Falha,", já existe um horário reservado para este dia")
-          end
-        }
+      errors.add(:Falha,dia)
   end
 
   def can_not_reservation_schedule_twice

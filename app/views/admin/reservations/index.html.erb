@@ -24,9 +24,9 @@
 
           <tbody>
             <% @reservations.each do |admin_reservation| %>
-            <tr>      
-              <td><%=  admin_reservation.schoolroom %></td>
-              <td><%= admin_reservation.laboratory %></td>
+            <tr>
+              <td><%=  admin_reservation.schoolroom.to_s %></td>
+              <td><%= admin_reservation.laboratory.to_s %></td>
               <td><%= admin_reservation.date_reservation %></td>
               <td><%= admin_reservation.campus_schedule.start.strftime("%H:%M") %> - <%= admin_reservation.campus_schedule.end.strftime("%H:%M") %></td>
 
