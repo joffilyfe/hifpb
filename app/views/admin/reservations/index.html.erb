@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8">
+            <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Reservas
+          </div>
+          <div class="col-md-4">
+            <%= link_to 'Nova reserva', new_admin_reservation_path, class: "btn btn-success pull-right" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <table data-toggle="table" id="table-import" data-search="true" data-pagination="true">
+          <thead>
+
+              <th>Sala</th>
+              <th>Laborátorio</th>
+              <th>Data da Reserva</th>
+              <th>Horário da Reserva</th>
+
+          </thead>
+
+          <tbody>
+            <% @reservations.each do |admin_reservation| %>
+            <tr>      
+              <td><%=  admin_reservation.schoolroom %></td>
+              <td><%= admin_reservation.laboratory %></td>
+              <td><%= admin_reservation.date_reservation %></td>
+              <td><%= admin_reservation.campus_schedule.start.strftime("%H:%M") %> - <%= admin_reservation.campus_schedule.end.strftime("%H:%M") %></td>
+
+
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

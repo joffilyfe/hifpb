@@ -5,6 +5,7 @@ class Laboratory < ApplicationRecord
   validate :exist_other_with_this_initials
   validate :exist_other_with_this_name
   has_many :lessons
+  has_many :reservation
   belongs_to :campus
 
   def exist_other_with_this_initials

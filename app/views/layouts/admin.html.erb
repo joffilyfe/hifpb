@@ -108,6 +108,14 @@
         </li>
       <% end %>
 
+
+        <li>
+          <%= link_to(admin_reservations_path) do %>
+          <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Reservas
+          <% end %>
+        </li>
+
+
       <% if user_is_admin? %>
       <li>
         <%= link_to(admin_user_index_path) do %>

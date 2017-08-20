@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schoolroom: nil
+  laboratory: one
+  date_reservation: 2017-08-18
+  campus_schedule: one
+
+
+two:
+  schoolroom: two
+  laboratory: nil
+  date_reservation: 2017-08-18
+  campus_schedule: two
+  

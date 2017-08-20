@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730221345) do
+ActiveRecord::Schema.define(version: 20170818225846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170730221345) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
-    t.string "code"
+    t.integer "code"
     t.bigint "course_id"
     t.bigint "course_subject_id"
     t.bigint "teacher_id"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170730221345) do
     t.string "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reason"
     t.bigint "campus_id"
     t.index ["campus_id"], name: "index_laboratories_on_campus_id"
   end
@@ -118,6 +119,19 @@ ActiveRecord::Schema.define(version: 20170730221345) do
     t.index ["permission_id", "user_id"], name: "index_permissions_users_on_permission_id_and_user_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.date "date_reservation"
+    t.boolean "status"
+    t.bigint "laboratory_id"
+    t.bigint "schoolroom_id"
+    t.bigint "campus_schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campus_schedule_id"], name: "index_reservations_on_campus_schedule_id"
+    t.index ["laboratory_id"], name: "index_reservations_on_laboratory_id"
+    t.index ["schoolroom_id"], name: "index_reservations_on_schoolroom_id"
+  end
+
   create_table "schoolrooms", force: :cascade do |t|
     t.integer "maximum_capacity"
     t.integer "amount_resources"
@@ -126,6 +140,7 @@ ActiveRecord::Schema.define(version: 20170730221345) do
     t.string "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reason"
     t.bigint "campus_id"
     t.index ["campus_id"], name: "index_schoolrooms_on_campus_id"
   end
@@ -164,4 +179,7 @@ ActiveRecord::Schema.define(version: 20170730221345) do
   add_foreign_key "lessons", "classrooms"
   add_foreign_key "lessons", "laboratories"
   add_foreign_key "lessons", "schoolrooms"
+  add_foreign_key "reservations", "campus_schedules"
+  add_foreign_key "reservations", "laboratories"
+  add_foreign_key "reservations", "schoolrooms"
 end

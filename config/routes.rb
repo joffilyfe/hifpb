@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
   get  '/logout', to: 'sessions#destroy'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     resources :laboratories, path: 'laboratorios'
     resources :schoolrooms, path: 'salas'
     resources :authorizations, path: 'autorizacoes'
+    resources :reservations,only: [:index,:new,:create] ,path: 'reservas'
     resources :classrooms, path:'turmas' do
       resources :lessons,  path: 'aulas'
     end
