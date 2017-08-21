@@ -11,8 +11,8 @@ class Laboratory < ApplicationRecord
   def to_s
     if (self.name == nil)
         "  -  "
+    else  "#{self.name}"
     end
-    else "#{self.name}"
   end
 
   def exist_other_with_this_initials

@@ -33,7 +33,11 @@ class Reservation < ApplicationRecord
       @reservations = Reservation.all
 
         @reservations.each{ |r|
-          if (r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == laboratory_id) && (r.schoolroom_id == schoolroom_id) )
+          if ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == laboratory_id) && (r.schoolroom_id == schoolroom_id))) ||
+             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == nil) && (r.schoolroom_id == schoolroom_id))) ||
+             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == laboratory_id) && (r.schoolroom_id == nil))) ||
+             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == laboratory_id) && (r.schoolroom_id != schoolroom_id))) ||
+             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id != laboratory_id) && (r.schoolroom_id == schoolroom_id)))
             errors.add(:Falha,", já existe uma reserva feita para este dia")
           end
         }
