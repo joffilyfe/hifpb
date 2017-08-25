@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hifpb</title>
+    <title>IFPB - Horários para salas, laboratórios, professores e cursos</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="tema-verde">
+    <% if @campus and @campus.any? %>
+    <div class="campus-bar">
+      <div class="container">
+        <ul class="campus-list">
+        <%- @campus.each do |campus|%>
+          <li class="campus" title="<%= campus.description %>">
+            <%= link_to(get_sigla(campus), set_campi_path(campus: campus.id, next: request.path)) %>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+    <% end %>
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 logo">
+            <p>Instituto Federal da Paraíba</p>
+            <%= link_to root_path do %>
+              <h1>Horários IFPB</h1>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="sobre">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <ul class="list-inline list-unstyled pull-right">
+                <li><a href="https://ifpb.edu.br" target="_blank">Site do IFPB</a></li>
+                <li>
+                  Semestre <%= @current_semester %>
+                </li>
+                <li><%= current_campi.description %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container main">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

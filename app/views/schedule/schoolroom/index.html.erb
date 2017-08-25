@@ -1,0 +1,18 @@
+<%= render "site/menu" %>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><%= current_campi.description %></div>
+  <% if @rooms and @rooms.any? %>
+    <ul class="list-group">
+      <% @rooms.each do |room| %>
+        <li class="list-group-item"><%= link_to(room.name, schedule_schoolroom_path(room: room.id)) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="panel-body">
+      Não há salas disponíveis para consulta.
+    </div>
+  <% end %>
+</div>
+
+

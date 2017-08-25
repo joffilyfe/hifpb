@@ -1,0 +1,30 @@
+<div class="diary-book campus-<%= campi.id %>">
+  <div class="content">
+    <div class="days">
+      <div class="day -Horario">Horário</div>
+      <div class="day -Segunda">Segunda</div>
+      <div class="day -Terca">Terça</div>
+      <div class="day -Quarta">Quarta</div>
+      <div class="day -Quinta">Quinta</div>
+      <div class="day -Sexta">Sexta</div>
+    </div>
+
+    <div class="courses">
+      <% CampusSchedule.where(campus: campi).each do |cs| %>
+        <div class="hour">
+          <%= cs.start.strftime("%H:%M")%> - <%= cs.end.strftime("%H:%M") %>
+        </div>
+        <% days.each_with_index do |day, i| %>
+          <% if not lessons.find_by(campus_schedule: cs, day: day).nil? %>
+            <div class="course <%= I18n.transliterate(lessons.find_by(campus_schedule: cs, day: day).day) %>">
+              <%= lessons.find_by(campus_schedule: cs, day: day) %>
+            </div>
+            <% else %>
+              <div class="course <%= I18n.transliterate(day) %>"></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

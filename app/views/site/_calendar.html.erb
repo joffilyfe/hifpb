@@ -1,0 +1,35 @@
+<div class="diary-book">
+  <div class="content">
+    <div class="days">
+      <div class="day -Segunda">Segunda</div>
+      <div class="day -Terca">Terça</div>
+      <div class="day -Quarta">Quarta</div>
+      <div class="day -Quinta">Quinta</div>
+      <div class="day -Sexta">Sexta</div>
+    </div>
+
+    <div class="courses">
+      <% schedules.each do |cs| %>
+        <% days.each_with_index do |day, i| %>
+          <% if not lessons.find_by(campus_schedule: cs, day: day).nil? %>
+            <div class="course <%= I18n.transliterate(lessons.find_by(campus_schedule: cs, day: day).day) %>">
+              <%= format_lesson_info(lessons.find_by(campus_schedule: cs, day: day)) %>
+            </div>
+            <% else %>
+              <div class="course <%= I18n.transliterate(day) %>"></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="hours">
+    <div class="hour">Horário</div>
+    <% schedules.each do |schedule| %>
+      <div class="hour">
+        <%= schedule.start.strftime("%H:%M")%> - <%=schedule.end.strftime("%H:%M") %>
+      </div>
+    <% end %>
+  </div>
+</div>

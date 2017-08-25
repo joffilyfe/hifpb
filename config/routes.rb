@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  root to: 'site#index'
+
+  get :set_campi, to: 'site#set_campi', path: :campi
+
+  namespace :schedule, path: 'horarios' do
+    match :courses, to: 'course#index', via: [:get, :post], path: :cursos
+    get :course, to: 'course#show', path: :curso
+    match :laboratories, to: 'laboratory#index', via: [:get, :post], path: :laboratorios
+    get :laboratory, to: 'laboratory#show', path: :laboratorio
+    match :schoolrooms, to: 'schoolroom#index', via: [:get, :post], path: :salas
+    get :schoolroom, to: 'schoolroom#show', path: :sala
+    match :teachers, to: 'teacher#index', via: [:get, :post], path: :professores
+    get :teacher, to: 'teacher#show', path: :professor
+
+  end
+
 
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
@@ -48,11 +64,14 @@ Rails.application.routes.draw do
       post 'importar', to: 'teacher#import', on: :collection
     end
 
-    # urls para relatorios
-    get '/relatorios/',  to: 'reports#index', as: 'reports'
-    get '/relatorios/salas',  to: 'reports#salas', as: 'reports_schoolrooms'
-    get '/relatorios/sala/:id',  to: 'reports#sala', as: 'report_schoolroom'
-    get '/relatorios/laboratorios',  to: 'reports#laboratorios', as: 'reports_laboratories'
-    get '/relatorios/laboratorio/:id',  to: 'reports#laboratorio', as: 'report_laboratory'
+    scope :relatorios do
+      get '/', to: 'reports#index', as: 'reports'
+      get '/professores',  to: 'reports#professores', as: 'reports_teachers'
+      get '/professor/:id',  to: 'reports#professor', as: 'report_teacher'
+      get '/salas',  to: 'reports#salas', as: 'reports_schoolrooms'
+      get '/sala/:id',  to: 'reports#sala', as: 'report_schoolroom'
+      get '/laboratorios',  to: 'reports#laboratorios', as: 'reports_laboratories'
+      get '/laboratorio/:id',  to: 'reports#laboratorio', as: 'report_laboratory'
+    end
   end
 end

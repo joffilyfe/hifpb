@@ -1,0 +1,187 @@
+/* - css/temas.css - */
+
+/* ==========================================================================
+   Modo DEBUG
+   ========================================================================== */
+
+    body.debug .header {
+        background: radial-gradient(ellipse at center center, #333 1%, #000 100%);
+    }
+
+    body.debug .footer {
+        background: #000;
+    }
+
+    body.debug .footer.footer-logos {
+        background: #333;
+    }
+
+    body.debug .sobre {
+        background: #333;
+    }
+
+    body.debug .menu-responsivo .menu-button{
+        background: #000;
+    }
+
+
+/* ==========================================================================
+   Tema Verde
+   ========================================================================== */
+    .tema-verde .header {
+        background-color: #0A5517;
+        color: #FFF;
+        background-image: radial-gradient(ellipse at center center, #19882C 1%, #025310 100%);
+    }
+
+    .tema-verde .header a {
+        color: #FFF;
+    }
+
+    .tema-verde .header .logo h1,
+    .tema-verde .header .logo .h1 {
+        color: #FFF;
+    }
+
+    .tema-verde .accessibility .key {
+        background-color: #9ED5AB;
+        color: #006600;
+    }
+
+    .tema-verde .footer {
+        background: #034811;
+        color: #fff;
+    }
+
+    .tema-verde .footer.footer-logos {
+        background: #00420c;
+    }
+
+    .tema-verde .footer .block {
+        border-left: 1px dotted #7dc48a;
+    }
+
+    .tema-verde .footer a, .footer a:hover, .footer a:focus, .footer a:visited {
+        color: #FFF;
+    }
+
+    .tema-verde .footer h1, .tema-verde .footer .h1,
+    .tema-verde .footer h2, .tema-verde .footer .h2,
+    .tema-verde .footer h3, .tema-verde .footer .h3,
+    .tema-verde .footer h4, .tema-verde .footer .h4,
+    .tema-verde .footer h5, .tema-verde .footer .h5,
+    .tema-verde .footer h6, .tema-verde .footer .h6 {
+        color: #7dc48a;
+    }
+
+    .tema-verde .sobre {
+        background: #00420c;
+        color: #FFF;
+    }
+
+    .tema-verde .sobre a, .sobre a:hover, .sobre a:visited, .sobre a:focus {
+        color: #FFF;
+    }
+
+    .tema-verde .sobre li {
+        border-right: 1px solid #6c9072;
+    }
+
+    .tema-verde .sobre li:last-child {
+        border-right: 0;
+    }
+
+    .tema-verde .menu-responsivo .menu-button{
+        background: #065116;
+    }
+
+    .tema-verde .menu .menu-title {
+        border-top: 4px solid #00510f;
+        color: #00510f;
+    }
+
+    .tema-verde .titulo {
+        border-top-color: #1D571F;
+        color: #1d571f;
+    }
+
+
+/* ==========================================================================
+   Tema Azul
+   ========================================================================== */
+    .tema-azul .header {
+        background-color: #1f5dc2;
+        color: #FFF;
+        background-image: radial-gradient(ellipse at center, #2773e1 1%, #1a5cbc 100%);
+    }
+
+    .tema-azul .header a {
+        color: #FFF;
+    }
+
+    .tema-azul .header .logo h1,
+    .tema-azul .header .logo .h1 {
+        color: #FFF;
+    }
+
+    .tema-azul .accessibility .key {
+        background-color: #FFF;
+        color: #0a1857;
+    }
+
+    .tema-azul .footer {
+        background: #1659BF;
+        color: #fff;
+    }
+
+    .tema-azul .footer.footer-logos {
+        background: #0042b1;
+    }
+
+    .tema-azul .footer .block {
+        border-left: 1px dotted #FFF;
+    }
+
+    .tema-azul .footer a, .footer a:hover, .footer a:focus, .footer a:visited {
+        color: #FFF;
+    }
+
+    .tema-azul .footer h1, .tema-azul .footer .h1,
+    .tema-azul .footer h2, .tema-azul .footer .h2,
+    .tema-azul .footer h3, .tema-azul .footer .h3,
+    .tema-azul .footer h4, .tema-azul .footer .h4,
+    .tema-azul .footer h5, .tema-azul .footer .h5,
+    .tema-azul .footer h6, .tema-azul .footer .h6 {
+        color: #FFF;
+    }
+
+    .tema-azul .sobre {
+        background: #0f4098;
+        color: #FFF;
+    }
+
+    .tema-azul .sobre a, .sobre a:hover, .sobre a:visited, .sobre a:focus {
+        color: #FFF;
+    }
+
+    .tema-azul .sobre li {
+        border-right: 1px solid #FFF;
+    }
+
+    .tema-azul .sobre li:last-child {
+        border-right: 0;
+    }
+
+    .tema-azul .menu-responsivo .menu-button{
+        background: #1f5dc2;
+    }
+
+    .tema-azul .menu .menu-title {
+        border-top: 4px solid #1659bf;
+        color: #1659bf;
+    }
+
+    .tema-azul .titulo {
+        border-top-color: #1F66CC;
+        color: #1F66CC;
+    }
