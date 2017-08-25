@@ -5,7 +5,7 @@ class Reservation < ApplicationRecord
   belongs_to :laboratory, optional: true
   belongs_to :campus_schedule
   validate :can_not_reservation_schedule_twice
-
+  validate :can_not_reservation_lesson_schedule_twice
   validate :there_must_be_one_of_the_two
   validate :can_not_make_reservation_less_than_24_hours
 
@@ -19,13 +19,26 @@ class Reservation < ApplicationRecord
 
 
   def can_not_reservation_lesson_schedule_twice
-    dia = ''
+
     if (date_reservation != nil)
-    dia = Date::DAYNAMES[date_reservation.wday]
+      I18n.locale = "pt-BR"
+      dia = I18n.t(:"date.day_names")[date_reservation.wday]
     end
       @lessons = Lesson.all
+      @lessons.each{ |l|
+        if ((l.day == dia) && (l.campus_schedule_id == campus_schedule_id))
+                    if ((l.laboratory_id == laboratory_id) && (l.schoolroom_id == schoolroom_id)) ||
+                    ((l.laboratory_id == nil) && (l.schoolroom_id == schoolroom_id)) ||
+                    ((l.laboratory_id == laboratory_id) && (l.schoolroom_id == nil)) ||
+                    ((l.laboratory_id == laboratory_id) && (l.schoolroom_id != schoolroom_id)) ||
+                    ((l.laboratory_id != laboratory_id) && (l.schoolroom_id == schoolroom_id))
 
-      errors.add(:Falha,dia)
+                        errors.add(:Falha,", já existe uma aula reservada para este horario e dia")
+
+                    end
+        end
+      }
+
   end
 
   def can_not_reservation_schedule_twice
@@ -33,12 +46,16 @@ class Reservation < ApplicationRecord
       @reservations = Reservation.all
 
         @reservations.each{ |r|
-          if ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == laboratory_id) && (r.schoolroom_id == schoolroom_id))) ||
-             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == nil) && (r.schoolroom_id == schoolroom_id))) ||
-             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == laboratory_id) && (r.schoolroom_id == nil))) ||
-             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id == laboratory_id) && (r.schoolroom_id != schoolroom_id))) ||
-             ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id) && ((r.laboratory_id != laboratory_id) && (r.schoolroom_id == schoolroom_id)))
-            errors.add(:Falha,", já existe uma reserva feita para este dia")
+          if ((r.date_reservation == date_reservation) && (r.campus_schedule_id == campus_schedule_id))
+                    if ((r.laboratory_id == laboratory_id) && (r.schoolroom_id == schoolroom_id)) ||
+                    ((r.laboratory_id == nil) && (r.schoolroom_id == schoolroom_id)) ||
+                    ((r.laboratory_id == laboratory_id) && (r.schoolroom_id == nil)) ||
+                    ((r.laboratory_id == laboratory_id) && (r.schoolroom_id != schoolroom_id)) ||
+                    ((r.laboratory_id != laboratory_id) && (r.schoolroom_id == schoolroom_id))
+
+                    errors.add(:Falha,", já existe uma reserva feita para este dia")
+
+                    end
           end
         }
   end

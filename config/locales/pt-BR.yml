@@ -1,0 +1,18 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        reservation:
+          attributes:
+            date_reservation: Nao pode deixar a data em branco
+
+  date:
+
+    day_names:
+      - Domingo
+      - Segunda
+      - Terça
+      - Quarta
+      - Quinta
+      - Sexta
+      - Sábado

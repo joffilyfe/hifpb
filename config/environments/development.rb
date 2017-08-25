@@ -9,6 +9,13 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  #internationalization
+  #  config.i18n.available_locales = ['pt-BR',:en]
+   config.i18n.enforce_available_locales = false
+   config.i18n.available_locales = ["pt-BR"]
+    config.i18n.default_locale = ":pt-BR"
+
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

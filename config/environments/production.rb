@@ -10,6 +10,12 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  #internationalization
+  # config.i18n.available_locales = ['pt-BR',:en]
+   config.i18n.enforce_available_locales = false
+   config.i18n.available_locales = ["pt-BR"]
+    config.i18n.default_locale = ":pt-BR"
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
