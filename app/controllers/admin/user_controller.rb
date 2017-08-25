@@ -4,7 +4,7 @@ class Admin::UserController < Admin::AdminController
 
   def index
     authorize User
-    @users = User.all
+    @users = User.all.paginate :page => params[:page], :per_page => 10
   end
 
   def edit

@@ -32,6 +32,14 @@
             <% end %>
           </tbody>
         </table>
+        <nav aria-label="...">
+        <ul class="pager">
+          <%= page_entries_info @campus %>
+          <br>
+          <li><%= will_paginate @campus, :page_links => false, :container => false %></li>
+        </ul>
+      </nav>
+
       </div>
     </div>
   </div>

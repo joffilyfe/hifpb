@@ -20,7 +20,7 @@
        <% end %>
      </div>
       <div class="panel-body">
-        <table data-toggle="table" id="table-import" data-search="true" data-pagination="true">
+        <table data-toggle="table" id="table-import" data-search="true">
          <thead>
           <th>#</th>
           <th>Descrição</th>
@@ -40,6 +40,13 @@
          <% end %>
        </tbody>
      </table>
+		 <nav>
+		 <ul class="pager">
+				<%= page_entries_info @course_subjects %>
+				<br>
+			 <li><%= will_paginate @course_subjects, :page_links => false, :container => false %></li>
+		 </ul>
+	 </nav>
    </div>
  </div>
 </div>

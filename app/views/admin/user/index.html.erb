@@ -10,7 +10,7 @@
       </div>
       <div class="panel-body">
 
-        <table data-toggle="table" id="table-import" data-search="true" data-pagination="true">
+        <table data-toggle="table" id="table-import" data-search="true">
           <thead>
               <th>ID</th>
               <th>Matricula</th>
@@ -29,6 +29,13 @@
             <% end %>
           </tbody>
         </table>
+        <nav>
+        <ul class="pager">
+           <%= page_entries_info @users %>
+           <br>
+          <li><%= will_paginate @users, :page_links => false, :container => false %></li>
+        </ul>
+      </nav>
 
       </div>
     </div>

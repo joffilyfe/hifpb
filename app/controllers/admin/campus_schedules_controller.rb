@@ -4,7 +4,7 @@ class Admin::CampusSchedulesController < Admin::AdminController
 
   def index
     @campus = Campus.find(params[:campus_id])
-    @campus_schedules = CampusSchedule.where(campus: @campus).order([:start, :end])
+    @campus_schedules = CampusSchedule.where(campus: @campus).order([:start, :end]).paginate :page => params[:page], :per_page => 10
   end
 
   def new

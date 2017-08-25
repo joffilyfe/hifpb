@@ -5,7 +5,7 @@ class Admin::LaboratoriesController < Admin::AdminController
 
   def index
     authorize Laboratory
-    @laboratories = Laboratory.all
+    @laboratories = Laboratory.all.paginate :page => params[:page], :per_page => 10
   end
 
   def new

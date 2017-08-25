@@ -4,7 +4,7 @@ class Admin::SchoolroomsController < Admin::AdminController
   before_action :set_authorization, only: [:index, :create, :show, :edit, :update, :destroy]
 
   def index
-    @schoolrooms = Schoolroom.all
+    @schoolrooms = Schoolroom.all.paginate :page => params[:page], :per_page => 10
   end
 
   def new

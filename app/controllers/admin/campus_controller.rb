@@ -4,7 +4,7 @@ class Admin::CampusController < Admin::AdminController
 
   def index
     authorize Campus
-    @campus = Campus.all.order(id: :asc)
+    @campus = Campus.all.order(id: :asc).paginate :page => params[:page], :per_page => 10
   end
 
   def import

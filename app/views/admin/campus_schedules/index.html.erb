@@ -3,7 +3,6 @@
     <h1 class="page-header">Horários</h1>
   </div>
 </div><!--/.row-->
-
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-default">
@@ -39,9 +38,17 @@
             </tr>
             <% end %>
           </tbody>
+
         </table>
+        <nav>
+        <ul class="pager">
+           <%= page_entries_info @campus_schedules %>
+           <br>
+          <li><%= will_paginate @campus_schedules, :page_links => false, :container => false %></li>
+        </ul>
+      </nav>
       </div>
     </div>
   </div>
-</div>
 
+</div>

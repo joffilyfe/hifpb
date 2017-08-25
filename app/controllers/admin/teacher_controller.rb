@@ -3,7 +3,7 @@ class Admin::TeacherController < Admin::AdminController
 
   def index
     authorize Teacher
-    @teachers = Teacher.all
+    @teachers = Teacher.all.paginate :page => params[:page], :per_page => 10
   end
 
   def import

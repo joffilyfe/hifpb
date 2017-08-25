@@ -4,7 +4,7 @@ class Admin::SemestersController < Admin::AdminController
   before_action :set_authorization, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   def index
-    @semesters = Semester.all.order(year: :desc)
+    @semesters = Semester.all.order(year: :desc).paginate :page => params[:page], :per_page => 10
   end
 
   def new

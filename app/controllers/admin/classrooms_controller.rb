@@ -4,9 +4,9 @@ class Admin::ClassroomsController < Admin::AdminController
 
   def index
     if params[:course_id]
-      @classrooms = policy_scope(Classroom).where(course_id: params[:course_id])
+      @classrooms = policy_scope(Classroom).where(course_id: params[:course_id]).paginate :page => params[:page], :per_page => 10
     else
-      @classrooms = policy_scope(Classroom).order(:course_id)
+      @classrooms = policy_scope(Classroom).order(:course_id).paginate :page => params[:page], :per_page => 10
     end
   end
 
