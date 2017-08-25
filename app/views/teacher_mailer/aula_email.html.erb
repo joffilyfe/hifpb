@@ -6,7 +6,7 @@
   <body>
     <h1>Olá, <%= @teacher.name %></h1>
     <p>
-      A turma <b><%= @lesson.classroom.name %></b> foi alterada,
+      A aula <b><%= @lesson.classroom.name %></b> foi alterada,
       <br><br>
       Dia:          <b><%= @lesson.day %></b><br>
       Horário:      <b><%= @schedule.start.strftime("%H:%M") %> - <%= @schedule.end.strftime("%H:%M") %></b><br>
