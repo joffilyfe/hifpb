@@ -38,6 +38,7 @@ class Admin::LessonsController < Admin::AdminController
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to admin_classroom_lessons_path, notice: 'Aula atualizada com sucesso' }
+        TeacherMailer.turma_email(@lesson).deliver
       else
         format.html { render :edit }
       end

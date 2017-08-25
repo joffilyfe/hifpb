@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Olá, <%= @teacher.name %></h1>
+    <p>
+      A turma <b><%= @lesson.classroom.name %></b> foi alterada,
+      <br><br>
+      Dia:          <b><%= @lesson.day %></b><br>
+      Horário:      <b><%= @schedule.start.strftime("%H:%M") %> - <%= @schedule.end.strftime("%H:%M") %></b><br>
+      Sala:         <b><%= @lesson.schoolroom.name %></b><br>
+      Laboratório:  <b><%= @lesson.laboratory.name %></b>
+    </p>
+    <p>Obrigado.</p>
+  </body>
+</html>
